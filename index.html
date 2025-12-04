@@ -64,28 +64,48 @@ button{background:var(--red);color:#fff;border:none;cursor:pointer;font-weight:7
 </header>
 
 <main class="container" id="app">
-  <section class="hero" id="home">
-    <div>
-      <h1 style="
-  color: #ffffff;
-  font-size: 32px;
-  line-height: 1.2;
-  font-weight: 700;
-  white-space: normal;
-  word-break: keep-all;
-">
-  Encontre sua próxima Honda
-</h1>
+  <section class="hero" id="home" style="display: flex; flex-direction: column; align-items: center; text-align: center; gap: 15px;">
 
-      <h1 class="small" style="color: #ffd700;">
-  Escolha o modelo e simule financiamento
-  ou consórcio em segundos.
-</h1>
+    <div style="max-width: 420px; width: 100%;">
+
+      <h1 style="
+        color: #ffffff;
+        font-size: clamp(26px, 5vw, 34px);
+        line-height: 1.2;
+        font-weight: 700;
+        white-space: normal;
+        word-break: keep-all;
+        margin: 0;
+      ">
+        Encontre sua próxima Honda
+      </h1>
+
+      <h1 class="small" style="
+        color: #ffd700;
+        font-size: clamp(18px, 4vw, 24px);
+        line-height: 1.3;
+        font-weight: 600;
+        white-space: normal;
+        word-break: keep-all;
+        margin: 8px 0 0 0;
+      ">
+        Escolha o modelo e simule financiamento<br>
+        ou consórcio em segundos.
+      </h1>
+
     </div>
-    <div style="max-width:380px">
-      <img src="https://image2url.com/images/1764878470670-38480b82-6ad8-411f-959c-d4e2acd16018.png" alt="Honda Revemar" style="width:100%;border-radius:8px;display:block" />
+
+    <div style="max-width: 380px; width: 100%;">
+      <img 
+        src="https://image2url.com/images/1764878470670-38480b82-6ad8-411f-959c-d4e2acd16018.png" 
+        alt="Honda Revemar" 
+        style="width: 100%; height: auto; border-radius: 8px; display: block;"
+      />
     </div>
+
   </section>
+</main>
+
 
   <section>
     <div class="grid" id="motoGrid" aria-live="polite"></div>
