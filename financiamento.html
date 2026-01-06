@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Simular Financiamento</title>
+<style>
+    body{
+        margin:0;
+        font-family:Arial, sans-serif;
+        background:#f2f2f7;
+        padding:20px;
+        animation: fadeIn .6s ease-in-out;
+    }
+    @keyframes fadeIn{
+        from{opacity:0; transform:translateY(12px);}
+        to{opacity:1; transform:translateY(0);}
+    }
+    .card{
+        background:white;
+        padding:18px;
+        border-radius:14px;
+        box-shadow:0 6px 18px rgba(0,0,0,0.1);
+        margin-bottom:20px;
+        animation: pop .5s ease;
+    }
+    @keyframes pop{
+        from{transform:scale(.96); opacity:0;}
+        to{transform:scale(1); opacity:1;}
+    }
+    h2{
+        margin:0 0 10px;
+        font-size:22px;
+    }
+    label{
+        font-weight:600;
+        margin-top:12px;
+        display:block;
+    }
+    input, select{
+        width:100%;
+        padding:12px;
+        border-radius:10px;
+        border:1px solid #ccc;
+        margin-top:4px;
+        font-size:16px;
+        background:#fafafa;
+        transition:0.2s;
+    }
+    input:focus, select:focus{
+        border-color:#c8102e;
+        background:white;
+        box-shadow:0 0 6px rgba(200,16,46,0.3);
+    }
+    button{
+        width:100%;
+        padding:14px;
+        background:#c8102e;
+        border:none;
+        margin-top:20px;
+        border-radius:12px;
+        font-size:18px;
+        font-weight:700;
+        color:white;
+        cursor:pointer;
+        transition:.25s;
+        animation: pop .5s ease;
+    }
+    button:active{
+        transform:scale(0.96);
+        background:#a00b23;
+    }
+    .moto-name{
+        font-weight:800;
+        font-size:19px;
+        margin-bottom:8px;
+        color:#c8102e;
+        text-align:center;
+    }
+
+    .carousel {
+        width:100%;
+        height:220px;
+        overflow:hidden;
+        border-radius:12px;
+        margin-bottom:15px;
+        position:relative;
+    }
+    .carousel-track {
+        display:flex;
+        width:max-content;
+        animation: scroll 18s linear infinite;
+    }
+    .carousel-track img {
+        width:100%;
+        height:220px;
+        object-fit:cover;
+        cursor: pointer;
+        transition:.3s;
+    }
+    .carousel-track img:hover {
+        transform:scale(1.03);
+    }
+    @keyframes scroll {
+        0%   { transform: translateX(0); }
+        100% { transform: translateX(-50%); }
+    }
+    #zoomView {
+        position:fixed;
+        top:0;
+        left:0;
+        width:100%;
+        height:100%;
+        background:rgba(0,0,0,0.85);
+        display:none;
+        justify-content:center;
+        align-items:center;
+        z-index:9999;
+    }
+    #zoomView img {
+        width:90%;
+        max-width:480px;
+        border-radius:12px;
+    }
+</style>
+</head>
+<body>
+
+<div class="card">
+    <h2 id="tituloMoto">Carregando...</h2>
+
+    <!-- CARROSSEL -->
+    <div class="carousel">
+        <div class="carousel-track" id="carouselTrack"></div>
+    </div>
+
+    <!-- ZOOM VIEW -->
+    <div id="zoomView" onclick="this.style.display='none'">
+        <img id="zoomImg">
+    </div>
+</div>
+
+<div class="card">
+    <h2>Simulação de Financiamento</h2>
+    <p class="moto-name" id="motoEscolhida">Carregando...</p>
+
+    <form id="finForm">
+        <label>Nome completo *</label>
+        <input name="nome" required placeholder="Ex: João da Silva">
+
+        <label>CPF *</label>
+        <input name="cpf" required placeholder="000.000.000-00">
+
+        <label>Data de Nascimento *</label>
+        <input name="nascimento" type="date" required>
+
+        <label>Celular *</label>
+        <input name="whatsapp" required placeholder="(99) 99999-9999">
+
+        <label>Profissão *</label>
+        <select name="tipo" required>
+            <option disabled selected>Selecione...</option>
+            <option value="Autônomo">Autônomo</option>
+            <option value="Assalariado">Assalariado</option>
+        </select>
+
+        <label>Renda Mensal (R$) *</label>
+        <input name="renda" type="number" required placeholder="Ex: 2000">
+
+        <label>Possui habilitação? *</label>
+        <select name="habilitacao" required>
+            <option disabled selected>Selecione...</option>
+            <option value="Sim">Sim</option>
+            <option value="Não">Não</option>
+        </select>
+
+        <label>Valor da entrada (R$)</label>
+        <input name="entrada" type="number" placeholder="Ex: 1500">
+
+        <input type="hidden" name="moto" id="motoInput">
+
+        <button>Enviar simulação para WhatsApp</button>
+    </form>
+</div>
+
+<script>
+    // --- LISTA DE MOTOS ---
+   const motos = [
+  { id:'BIZ125ES', nome:'BIZ 125 ES', img1:'https://www.honda.com.br/motos/sites/hda/files/2024-08/nova-carenagem-honda-biz-125-es_1560x624.webp', img2:'https://www.honda.com.br/motos/sites/hda/files/2024-08/novo-grafismo-honda-biz-125-es_1560x624.webp', img3:'https://www.honda.com.br/motos/sites/hda/files/2024-08/novo-painel-honda-biz-125-es_1560x624_fundo%20branco.webp' },
+  { id:'BIZ125EX', nome:'BIZ 125 EX', img1:'https://www.honda.com.br/motos/sites/hda/files/2024-08/nova-carenagem-honda-biz-125-ex_1560x624.webp', img2:'https://www.honda.com.br/motos/sites/hda/files/2024-08/Biz_125_Diferencial_Freios_nas_duas_maos.webp', img3:'https://www.honda.com.br/motos/sites/hda/files/2024-08/luz-de-poscionamento-led-honda-biz-125-ex_2_1560x624.jpg' },
+  { id:'CG160START', nome:'CG 160 START', img1:'https://www.honda.com.br/motos/sites/hda/files/2025-08/visao-frontal-da-lateral-direita-da-honda-cg-160-start.webp', img2:'https://www.honda.com.br/motos/sites/hda/files/2025-08/painel-da-moto-honda-cg-160-start.webp', img3:'https://www.honda.com.br/motos/sites/hda/files/2025-08/lanterna-traseira-em-led-da-moto-honda-cg-160-start.webp' },
+  { id:'CG160FAN', nome:'CG 160 FAN', img1:'https://www.honda.com.br/motos/sites/hda/files/2025-08/visao-frontal-da-lateral-direita-da-honda-cg-160-fan.webp', img2:'https://www.honda.com.br/motos/sites/hda/files/2025-08/farol-da-moto-honda-cg-160-fan-.webp', img3:'https://www.honda.com.br/motos/sites/hda/files/2025-08/painel-da-moto-honda-cg-160-fan.webp' },
+  { id:'CG160TITAN', nome:'CG 160 TITAN', img1:'https://www.honda.com.br/motos/sites/hda/files/2025-08/visao-frontal-da-lateral-direita-da-honda-cg-160-titan.webp', img2:'https://www.honda.com.br/motos/sites/hda/files/2025-08/painel-da-moto-honda-cg-160-titan.webp', img3:'https://www.honda.com.br/motos/sites/hda/files/2025-08/Suspens%C3%A3o-dianteira-da-honda-cg-160-titan.webp' },
+  { id:'CB300FTWABS', nome:'CB 300F TWISTER ABS', img1:'https://www.honda.com.br/motos/sites/hda/files/2025-07/CB_300F_TWISTER_ABS_Novo_Design.webp', img2:'https://www.honda.com.br/motos/sites/hda/files/2025-07/Painel_Digital.webp', img3:'https://www.honda.com.br/motos/sites/hda/files/2025-07/CB_300F_TWISTER_ILUMINA%C3%87%C3%83O_FULL_LED_1080x670.webp' },
+  { id:'CB300FTWCBS', nome:'CB 300F TWISTER CBS', img1:'https://www.honda.com.br/motos/sites/hda/files/2025-07/3_4FD-CBS.webp', img2:'https://www.honda.com.br/motos/sites/hda/files/2025-07/3_4FD-CBS_3.webp', img3:'https://www.honda.com.br/motos/sites/hda/files/2025-07/Painel_Digital_CBS.webp' },
+  { id:'NXR160BRS', nome:'NXR 160 BROS CBS', img1:'https://www.honda.com.br/motos/sites/hda/files/2024-08/honda-nxr-bros-160-lateral-dianteira-direita-vermelho.webp', img2:'https://www.honda.com.br/motos/sites/hda/files/2024-08/novo-painel-honda-nxr-bros-160.webp', img3:'https://www.honda.com.br/motos/sites/hda/files/2024-08/farol-honda-nxr-bros-160.webp' },
+  { id:'NXR160ABS', nome:'NXR 160 BROS ABS', img1:'https://www.honda.com.br/motos/sites/hda/files/2024-08/usb-c-honda-nxr-bros-160.webp', img2:'https://www.honda.com.br/motos/sites/hda/files/2025-08/Cor_Carenagem_1640x1024.webp', img3:'https://www.honda.com.br/motos/sites/hda/files/2025-07/Bros-Cinza-3_4FD-ABS.webp' },
+  { id:'XRE190', nome:'XRE 190', img1:'https://www.honda.com.br/motos/sites/hda/files/2025-08/Moto-preta-vista-de-lado-modelo-estilo-trail.webp', img2:'https://www.honda.com.br/motos/sites/hda/files/2025-08/full-led-honda-xre-190_2026.webp', img3:'https://www.honda.com.br/motos/sites/hda/files/2025-08/Painel-daHonda-XRE-190.webp' },
+  { id:'SAHARA300ABS', nome:'SAHARA 300 ABS', img1:'https://mobilidade.estadao.com.br/wp-content/uploads/2025/08/sahara-300-2026-std.jpeg-1024x576.webp', img2:'https://image.webmotors.com.br/_fotos/anunciousados/gigante/2025/202511/20251111/honda-xre-300-sahara-wmimagem10272612322.jpg?s=fill&w=552&h=414&q=60', img3:'https://image.webmotors.com.br/_fotos/anunciousados/gigante/2025/202511/20251111/honda-xre-300-sahara-wmimagem10272791827.jpg?s=fill&w=552&h=414&q=60' },
+  { id:'SAHARA300RALLY', nome:'SAHARA 300 RALLY', img1:'https://production.autoforce.com/uploads/picture/image/270739816/main_webp_comprar-sahara-300-2026_73051e4166.webp', img2:'https://www.honda.com.br/motos/sites/hda/files/2025-08/Imagem_Zoom_Honda_Sahara_300_Vermelho.webp', img3:'https://production.autoforce.com/uploads/picture/image/270739824/main_webp_comprar-sahara-300-2026_c2c7f68a31.webp' },
+  { id:'SAHARA300ADV', nome:'SAHARA 300 ADV', img1:'https://www.honda.com.br/motos/sites/hda/files/2025-07/Alerta%20de%20Frenagem%20Sahara%20300.webp', img2:'https://www.honda.com.br/motos/sites/hda/files/2025-08/Honda-Sahara-300-Design-Imponente.webp', img3:'https://www.honda.com.br/motos/sites/hda/files/2025-07/Sahara_300_Farol_Full_LED.webp' },
+  { id:'XR300LT', nome:'XR 300L TORNADO', img1:'https://www.honda.com.br/motos/sites/hda/files/2024-09/XR_300L_Tornado_R5-356_1644x768Design_2.webp', img2:'https://www.honda.com.br/motos/sites/hda/files/2024-08/cambio-de-6-marchas-honda-xr-300l-tornado-vermelho-fighting-red.webp', img3:'https://www.honda.com.br/motos/sites/hda/files/2024-08/painel-digital-honda-xr-300l-tornado-vermelho-fighting-red%20%281%29%20%281%29_0.webp' },
+  { id:'PCX', nome:'PCX CBS', img1:'https://www.honda.com.br/motos/sites/hda/files/2024-11/honda-pcx-tecnologia_0.webp', img2:'https://www.honda.com.br/motos/sites/hda/files/2025-08/painel-da-moto-honda-pcx.webp', img3:'https://www.honda.com.br/motos/sites/hda/files/2025-08/idling-stop-da-moto-honda-pcx.webp' },
+  { id:'PCXABS', nome:'PCX ABS', img1:'https://www.honda.com.br/motos/sites/hda/files/2025-08/visao-da-lateral-direita-da-moto-honda-pcx.webp', img2:'https://www.honda.com.br/motos/sites/hda/files/2025-08/farol-em-led-da-moto-honda-pcx.webp', img3:'https://www.honda.com.br/motos/sites/hda/files/2025-08/celular-carregando-na-entrada-usb-c-da-moto-honda-pcx.webp' },
+  { id:'HONADA_ADV', nome:'Honda ADV', img1:'https://www.honda.com.br/motos/sites/hda/files/2024-12/honda-adv-design.webp', img2:'https://www.honda.com.br/motos/sites/hda/files/2024-12/iluminacao-full-led-honda-adv.webp', img3:'https://www.honda.com.br/motos/sites/hda/files/2024-12/painel-honda-adv.webp' },
+  { id:'ELITE125', nome:'Elite 125', img1:'https://www.honda.com.br/motos/sites/hda/files/2024-05/honda-elite-125-tecnologia-luz-de-presenca-e-farol-de-led.webp', img2:'https://www.honda.com.br/motos/sites/hda/files/2024-08/honda-elite-125-tecnologia-painel-100-digital_0.webp', img3:'https://www.honda.com.br/motos/sites/hda/files/2024-08/honda-elite-125-tecnologia-idling-stop.webp' },
+  { id:'POP110', nome:'POP 110i ES +10', img1:'https://www.honda.com.br/motos/sites/hda/files/2024-04/Farol-Pop110iES_0.webp', img2:'https://www.honda.com.br/motos/sites/hda/files/2024-04/MODULO~1_0.jpg', img3:'https://www.honda.com.br/motos/sites/hda/files/2024-04/design-detalhes-laterais-da-pop-110i-es_0.webp' },
+  { id:'CRF300F', nome:'CRF 300F', img1:'https://www.honda.com.br/motos/sites/hda/files/2025-08/Honda_CRF300_2025_R5_-2019.webp', img2:'https://www.honda.com.br/motos/sites/hda/files/2025-08/Honda_CRF300_2025_R5_-747.webp', img3:'https://www.honda.com.br/motos/sites/hda/files/2025-08/Honda_CRF300_2025_R5_-3108.webp' },
+  { id:'CB500HOR', nome:'CB 500 HORNET', img1:'https://www.honda.com.br/motos/sites/hda/files/2025-05/3_4FD_0.webp', img2:'https://www.honda.com.br/motos/sites/hda/files/2025-05/Farol.webp', img3:'https://www.honda.com.br/motos/sites/hda/files/2025-05/Painel_0.webp' },
+  { id:'NX500', nome:'NX 500', img1:'https://www.honda.com.br/motos/sites/hda/files/2025-05/3_4FD_2.webp', img2:'https://www.honda.com.br/motos/sites/hda/files/2025-05/Farol_0.webp', img3:'https://www.honda.com.br/motos/sites/hda/files/2025-05/Painel_1.webp' },
+  { id:'NC750X', nome:'NC 750X', img1:'https://www.honda.com.br/motos/sites/hda/files/2025-10/3_4FD-v.webp', img2:'https://www.honda.com.br/motos/sites/hda/files/2025-10/2025-NC750X_Location_Details_0167_L.webp', img3:'https://www.honda.com.br/motos/sites/hda/files/2025-10/3_4TD-v.webp' },
+  { id:'CB1000R70', nome:'CB 1000R 70%', img1:'https://www.honda.com.br/motos/sites/hda/files/2023-09/moto-honda-cb-1000r-preto-fosco-mat-ballistic-black-metallic-lateral-direito.webp', img2:'https://www.honda.com.br/motos/sites/hda/files/2023-09/11_4.webp', img3:'https://www.honda.com.br/motos/sites/hda/files/2023-09/7_0.webp' },
+  { id:'CRF1100L', nome:'CRF 1100L AFRICA TWIN 70%', img1:'https://www.honda.com.br/motos/sites/hda/files/2025-12/Honda-CRF1100-vista%20lateral.webp', img2:'https://www.honda.com.br/motos/sites/hda/files/2025-12/Painel-da-Africa-Twin-em-destaque.webp', img3:'https://www.honda.com.br/motos/sites/hda/files/2025-12/Led-e-guid%C3%A3o-moto-Honda-Africa-Twin-em-destaque.webp' }
+];
+
+
+
+    // --- PEGA MOTO ESCOLHIDA NA URL ---
+const params = new URLSearchParams(window.location.search);
+const motoId = params.get("moto") || null;
+
+// encontra a moto correta
+const motoSelecionada = motos.find(m => m.id === motoId) || motos[0];
+
+// atualiza título e formulário
+document.getElementById("tituloMoto").innerText = motoSelecionada.nome;
+document.getElementById("motoEscolhida").innerText = motoSelecionada.nome;
+document.getElementById("motoInput").value = motoSelecionada.nome;
+
+// --- CRIA IMAGENS DO CARROSSEL ---
+// usa img1, img2, img3 do objeto da moto
+let imagensMoto = [motoSelecionada.img1, motoSelecionada.img2, motoSelecionada.img3];
+let track = document.getElementById("carouselTrack");
+
+// repetir as imagens para animação infinita
+let imgsLoop = [...imagensMoto, ...imagensMoto];
+
+track.innerHTML = imgsLoop.map(src => `<img src="${src}" onclick="abrirZoom('${src}')">`).join("");
+
+// --- FUNÇÃO ZOOM ---
+function abrirZoom(src){
+    document.getElementById("zoomImg").src = src;
+    document.getElementById("zoomView").style.display = "flex";
+}
+
+    // --- ENVIO WHATSAPP ---
+    const form = document.getElementById("finForm");
+    form.addEventListener("submit", function(e){
+        e.preventDefault();
+        const fd = new FormData(form);
+        const data = Object.fromEntries(fd.entries());
+        const msg = 
+`*INFORMAÇÕES NECESSÁRIAS PARA PRÉ-ANÁLISE*
+*Moto:* ${data.moto}
+*Nome:* ${data.nome}
+*CPF:* ${data.cpf}
+*Nascimento:* ${data.nascimento}
+*Celular:* ${data.whatsapp}
+*Renda:* R$ ${data.renda}
+*Tipo:* ${data.tipo}
+*Habilitação:* ${data.habilitacao}
+*Entrada:* R$ ${data.entrada || "0"}`;
+        const zap = "5594992781498";
+        const url = `https://wa.me/${zap}?text=${encodeURIComponent(msg)}`;
+        window.location.href = url;
+    });
+</script>
+
+</body>
+</html>
