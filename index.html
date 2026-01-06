@@ -23,19 +23,19 @@
             overflow-x: hidden;
         }
 
-        /* FUNDO DE FOGOS EM LOOP (GENERAL) */
+        /* FUNDO DE FOGOS EM LOOP */
         #bg-canvas {
             position: fixed;
             top: 0; left: 0;
             width: 100%; height: 100%;
             z-index: -1;
-            filter: blur(8px); /* Desfocado profissional */
+            filter: blur(8px);
             opacity: 0.4;
         }
 
         header {
             background: rgba(0,0,0,0.9);
-            padding: 20px 5%;
+            padding: 15px 5%;
             display: flex;
             justify-content: space-between;
             align-items: center;
@@ -45,22 +45,88 @@
         }
 
         .logo-campanha {
-            height: 50px;
+            height: 45px;
             filter: drop-shadow(0 0 10px var(--red-honda));
         }
 
-        .container { max-width: 1200px; margin: 0 auto; padding: 40px 20px; }
+        /* AREA DO VENDEDOR NO TOPO */
+        .vendedor-topo {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            padding: 40px 5% 10px 5%;
+            position: relative;
+        }
+
+        .vendedor-moldura {
+            position: relative;
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            border: 4px solid var(--gold-premium);
+            box-shadow: 0 0 20px rgba(212, 175, 55, 0.4);
+            background: #222;
+            padding: 3px;
+            animation: brilhoPerfil 3s infinite alternate;
+        }
+
+        .vendedor-moldura img {
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+            object-fit: cover;
+        }
+
+        .vendedor-info {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .vendedor-info .cargo {
+            font-size: 0.8rem;
+            color: var(--gold-premium);
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            font-weight: 700;
+        }
+
+        .vendedor-info .nome-vendedor {
+            font-size: 1.8rem;
+            font-weight: 900;
+            color: #fff;
+            text-shadow: 0 2px 10px rgba(0,0,0,0.5);
+        }
+
+        .sparkle {
+            position: absolute;
+            font-size: 20px;
+            animation: girarSparkle 2s infinite linear;
+        }
+
+        @keyframes girarSparkle {
+            from { transform: rotate(0deg) scale(1); opacity: 1; }
+            to { transform: rotate(360deg) scale(1.2); opacity: 0.5; }
+        }
+
+        @keyframes brilhoPerfil {
+            from { border-color: var(--gold-premium); box-shadow: 0 0 10px var(--gold-premium); }
+            to { border-color: #fff; box-shadow: 0 0 25px var(--gold-premium); }
+        }
+
+        .container { max-width: 1200px; margin: 0 auto; padding: 20px; }
 
         .section-title {
             text-align: center;
             font-weight: 900;
-            font-size: 2.5rem;
-            margin-bottom: 50px;
+            font-size: clamp(1.8rem, 5vw, 2.8rem);
+            margin: 40px 0 60px 0;
             text-transform: uppercase;
             letter-spacing: -1px;
+            color: #fff;
+            border-bottom: 2px solid rgba(255,255,255,0.1);
+            padding-bottom: 20px;
         }
 
-        /* GRID DE MOTOS PROFISSIONAL */
         .moto-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
@@ -73,13 +139,9 @@
             overflow: hidden;
             position: relative;
             border: 2px solid #333;
-            transition: border-color 0.3s;
             box-shadow: 0 20px 50px rgba(0,0,0,0.5);
         }
 
-        .moto-card:hover { border-color: var(--red-honda); }
-
-        /* PALCO DA MOTO */
         .moto-stage {
             height: 250px;
             background: #fff;
@@ -88,7 +150,7 @@
             align-items: center;
             justify-content: center;
             overflow: hidden;
-            border-bottom: 1px solid #eee;
+            cursor: pointer;
         }
 
         .placa-ano {
@@ -118,13 +180,12 @@
         }
 
         .moto-img {
-            width: 80%;
+            width: 85%;
             z-index: 3;
-            transition: transform 0.1s;
             filter: drop-shadow(0 15px 15px rgba(0,0,0,0.1));
+            transition: opacity 0.2s;
         }
 
-        /* ANIMAÇÃO BURN-OUT E LOOP */
         .burnout-smoke {
             position: absolute;
             bottom: 40px; left: 50%;
@@ -145,40 +206,77 @@
             z-index: 1;
         }
 
-        .animate-drive { animation: driveLoop 2.5s cubic-bezier(0.45, 0.05, 0.55, 0.95) forwards; }
+        .animate-drive { 
+            animation: driveLoop 1.6s cubic-bezier(0.45, 0.05, 0.55, 0.95) forwards; 
+        }
         
         @keyframes driveLoop {
-            0% { transform: translateX(0) scale(1); }
-            10% { transform: translateX(-15px) rotate(-2deg); }
-            30% { transform: translateX(120vw); opacity: 1; }
-            31% { opacity: 0; transform: translateX(-120vw); }
-            100% { transform: translateX(0); opacity: 1; }
-        }
+    0% { 
+        transform: translateX(0) scale(1); 
+        opacity: 1; 
+    }
+    /* Saída: Ela dá uma leve ré e sai disparada */
+    10% { 
+        transform: translateX(-30px) rotate(-2deg); 
+    } 
+    45% { 
+        transform: translateX(130vw) scale(1); 
+        opacity: 1; 
+    }
+    /* Invisível: Momento da troca de cor do outro lado */
+    46% { 
+        opacity: 0; 
+        transform: translateX(-130vw) scale(1); 
+    }
+    48% { 
+        opacity: 1; 
+    }
+    /* Entrada: Ela vem rápido da esquerda e vai parando suavemente */
+    100% { 
+        transform: translateX(0) scale(1); 
+        opacity: 1; 
+    }
+}
 
-        /* CORPO DO CARD */
         .card-info { padding: 25px; color: #111; text-align: center; }
-        .moto-name { font-size: 1.5rem; font-weight: 900; margin: 0; color: #000; }
-        .moto-price { color: var(--red-honda); font-size: 1.3rem; font-weight: 700; margin: 10px 0; }
+        .moto-name { font-size: 1.5rem; font-weight: 900; margin: 0; }
+        .moto-price { color: var(--red-honda); font-size: 1.2rem; font-weight: 700; margin: 10px 0; }
 
         .btn-box { display: flex; gap: 10px; margin-top: 20px; }
         .btn-action {
             flex: 1; padding: 15px; border-radius: 8px;
             text-decoration: none; font-weight: 800;
-            text-transform: uppercase; font-size: 0.8rem;
+            text-transform: uppercase; font-size: 0.75rem;
             transition: 0.3s; text-align: center;
         }
         .btn-fin { background: var(--red-honda); color: white; }
         .btn-cons { background: #000; color: white; }
-        .btn-action:hover { transform: translateY(-3px); filter: brightness(1.2); }
 
-        .btn-firework {
-            position: absolute; bottom: 10px; right: 10px;
-            background: none; border: 1px solid #ddd; border-radius: 50%;
-            width: 35px; height: 35px; cursor: pointer; font-size: 15px;
+        .agente-ia {
+            position: fixed;
+            right: 24px;
+            bottom: 24px;
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            padding: 10px 16px;
+            background: linear-gradient(135deg,#25D366,#1ebe5d);
+            border-radius: 50px;
+            text-decoration: none;
+            box-shadow: 0 20px 45px rgba(0,0,0,.35);
+            animation: flutuar 2.5s ease-in-out infinite;
+            z-index: 9999;
         }
+        .agente-foto { width: 52px; height: 52px; border-radius: 50%; border: 3px solid #fff; }
+        .agente-texto strong { color: #fff; font-size: 14px; display: block; }
+        .agente-texto span { color: #eafff3; font-size: 12px; }
 
-        @media (max-width: 768px) {
-            .section-title { font-size: 1.8rem; }
+        @keyframes flutuar { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-6px); } }
+
+        @media(max-width:768px){
+            .vendedor-info .nome-vendedor { font-size: 1.3rem; }
+            .vendedor-moldura { width: 80px; height: 80px; }
+            .agente-texto { display: none; }
         }
     </style>
 </head>
@@ -187,207 +285,262 @@
 <canvas id="bg-canvas"></canvas>
 
 <header>
-    <div id="header-area">
-        <img src="" id="logo-campanha" class="logo-campanha" alt="Honda Campanha">
-    </div>
+    <img src="" id="logo-campanha" class="logo-campanha" alt="Honda Campanha">
     <div style="text-align: right">
         <div style="font-weight: 900; color: var(--red-honda)">REVEMAR HONDA</div>
         <div id="tema-label" style="font-size: 0.7rem; color: #888"></div>
     </div>
 </header>
 
+<div class="vendedor-topo">
+    <div class="vendedor-moldura">
+        <span class="sparkle" style="top:-10px; right:-10px;">✨</span>
+        <span class="sparkle" style="bottom:-5px; left:-10px; animation-delay: 1s;">🎉</span>
+        <img src="https://image2url.com/images/1763321623834-3529dfca-89a1-481c-9b53-be3324834b67.jpg" alt="Vendedor">
+    </div>
+    <div class="vendedor-info">
+        <span class="cargo">Consultor de Vendas</span>
+        <span class="nome-vendedor">Lucas Honda</span>
+    </div>
+</div>
+
 <main class="container">
     <h1 class="section-title" id="titulo-principal"></h1>
-
-    <div class="moto-grid" id="motoGrid">
-        </div>
+    <div class="moto-grid" id="motoGrid"></div>
 </main>
 
+<a class="agente-ia"
+   href="https://agent.vendedoria.acelerabit.com/site-vendedor?vendedor_image=https://image2url.com/images/1763321623834-3529dfca-89a1-481c-9b53-be3324834b67.jpg&vendedor_name=Lucas da Honda&vendedor_whatsapp=5594992781498&vendedor_id=9115&vendedor_concessionaria=REVEMAR&region_id=1"
+   target="_blank"
+   title="Fale comigo agora">
+
+    <img class="agente-foto"
+         src="https://image2url.com/images/1763321623834-3529dfca-89a1-481c-9b53-be3324834b67.jpg"
+         alt="lucas da Honda">
+
+    <div class="agente-texto">
+        <strong>lucas da Honda</strong>
+        <span>Fale comigo agora</span>
+    </div>
+</a>
+
 <script>
-/* ============================================================
-   AREA DE PERSONALIZAÇÃO (Onde você muda o tema mensal)
-   ============================================================ */
 const CONFIG_TEMA = {
     nomeCampanha: "FELIZ ANO NOVO 2026",
     tituloSite: "Ofertas de Janeiro Revemar",
     logoURL: "https://image2url.com/r2/bucket2/images/1767636595479-3f4280da-bfe1-4fc5-8128-1ca92c4073c6.png",
-    corDestaque: "#c8102e",
-    enfeiteIcone: "https://cdn-icons-png.flaticon.com/512/3893/3893071.png", // Imagem do enfeite pendurado
+    enfeiteIcone: "https://cdn-icons-png.flaticon.com/512/3893/3893071.png",
     anoVigente: "2026"
 };
 
-/* DADOS DAS MOTOS */
 const MOTOS = [
-   { id:'BIZ125ES', nome:'BIZ 125 ES', ano:2026, precoAvista:'R$ 20.320',
-  bonus:'R$ 4.166',
-  img:'https://www.honda.com.br/motos/sites/hda/files/2025-08/Imagem-Home-Honda-Biz-125-ES-Preto-Black_0.webp',
-  parcelas:{36:550.10,48:417.55,60:339.00,80:261.73}
+{
+  id:'POP110', nome:'POP 110i ES', ano:2026, precoAvista:'R$ 16.831',
+  imgs:[
+    'https://www.honda.com.br/motos/sites/hda/files/2025-08/Imagem-Home-Pop-110i-Es-Vermelho-Fighting-Red_0.webp',
+    'https://d1qa0ax3fv1ims.cloudfront.net/catalogo_imagens/duas_rodas/pop-branca-lateral.png',
+    'https://d1qa0ax3fv1ims.cloudfront.net/catalogo_imagens/duas_rodas/pop-preta-3_4fd.png'
+  ]
 },
 
-{ id:'BIZ125EX', nome:'BIZ 125 EX', ano:2026, precoAvista:'R$ 24.633',
-  bonus:'R$ 4.993',
-  img:'https://www.honda.com.br/motos/sites/hda/files/2025-08/Imagem-Home-Biz-125-EX-Branco-Perolizado-Pearl-Hakuji-White_0.webp',
-  parcelas:{36:680.89,48:516.83,60:419.69,80:323.96}
+{
+  id:'BIZ125ES', nome:'BIZ 125 ES', ano:2026, precoAvista:'R$ 20.320',
+  imgs:[
+    'https://www.honda.com.br/motos/sites/hda/files/2025-08/Imagem-Home-Honda-Biz-125-ES-Preto-Black_0.webp',
+    'https://d1qa0ax3fv1ims.cloudfront.net/catalogo_imagens/duas_rodas/biz-125-es-vermelho-maceio-red-lado-a-555-x-372.png',
+    'https://d1qa0ax3fv1ims.cloudfront.net/catalogo_imagens/duas_rodas/biz-125-es-branco-lado-a-350-x280.png'
+  ]
 },
 
-{ id:'CG160START', nome:'CG 160 START', ano:2026, precoAvista:'R$ 24.868',
-  bonus:'R$ 1.821',
-  img:'https://www.honda.com.br/motos/sites/hda/files/2025-08/Imagem-home-visao-da-lateral-direita-da-honda-cg-160-start.webp',
-  parcelas:{36:711.36,48:539.98,60:438.37,80:338.46}
+{
+  id:'BIZ125EX', nome:'BIZ 125 EX', ano:2026, precoAvista:'R$ 24.633',
+  imgs:[
+    'https://www.honda.com.br/motos/sites/hda/files/2025-08/Imagem-Home-Biz-125-EX-Branco-Perolizado-Pearl-Hakuji-White_0.webp',
+    'https://d1qa0ax3fv1ims.cloudfront.net/catalogo_imagens/duas_rodas/biz-125-ex-azul-b-555-x372_0.png',
+    'https://d1qa0ax3fv1ims.cloudfront.net/catalogo_imagens/duas_rodas/biz-125-ex-azul-frente-555-x372_2.png'
+  ]
 },
 
-{ id:'CG160FAN', nome:'CG 160 FAN', ano:2026, precoAvista:'R$ 26.936',
-  bonus:'R$ 3.696',
-  img:'https://www.honda.com.br/motos/sites/hda/files/2025-08/Imagem-Home-Honda-CG-160-Fan-Vermelho-Perolizado.webp',
-  parcelas:{36:776.34,48:589.28,60:478.42,80:369.37}
+{
+  id:'ELITE125', nome:'Elite 125', ano:2026, precoAvista:'R$ 19.368',
+  imgs:[
+    'https://www.honda.com.br/motos/sites/hda/files/2025-08/Imagem-Home-Elite-125-Vermelho-Maceio-Red_0.webp',
+    'https://d1qa0ax3fv1ims.cloudfront.net/catalogo_imagens/duas_rodas/elite-lateral-3_0.png',
+    'https://d1qa0ax3fv1ims.cloudfront.net/catalogo_imagens/duas_rodas/moto-prata-honda_direita-lado_0.png',
+    'https://d1qa0ax3fv1ims.cloudfront.net/catalogo_imagens/duas_rodas/elite-lateral_0_0.png'
+  ]
 },
 
-{ id:'CG160TITAN', nome:'CG 160 TITAN', ano:2026, precoAvista:'R$ 28.737',
-  bonus:'R$ 3.513',
-  img:'https://www.honda.com.br/motos/sites/hda/files/2025-08/Imagem-Home-Honda-CG-160-Titan-Cinza-Met%C3%A1lico.webp',
-  parcelas:{36:825.30,48:626.44,60:508.59,80:392.67}
+{
+  id:'PCX', nome:'PCX CBS', ano:2026, precoAvista:'R$ 24.357',
+  imgs:['https://www.honda.com.br/motos/sites/hda/files/2025-08/imagem-home-honda-pcx-branco_0.webp']
 },
 
-{ id:'CB300FTWABS', nome:'CB 300F TWISTER ABS', ano:2026, precoAvista:'R$ 34.116',
-  bonus:'R$ 4.863',
-  img:'https://www.motopel.com.br/site/wp-content/uploads/2021/02/cb-300F-twister-azul.webp',
-  parcelas:{36:1032.32,48:783.58,60:636.16,80:491.16}
+{
+  id:'PCXABS', nome:'PCX ABS', ano:2026, precoAvista:'R$ 26.533',
+  imgs:['https://image2url.com/r2/bucket3/images/1767705525933-5a8cc60a-5afb-45ee-bb02-4d1cc2699a64.png']
 },
 
-{ id:'CB300FTWCBS', nome:'CB 300F TWISTER CBS', ano:2026, precoAvista:'R$ 32.941',
-  bonus:'R$ 4.603',
-  img:'https://www.motopel.com.br/site/wp-content/uploads/2021/02/cb-300F-twister-cinza.webp',
-  parcelas:{36:993.65,48:754.23,60:612.33,80:472.77}
+{
+  id:'HONADA_ADV', nome:'Honda ADV', ano:2026, precoAvista:'R$ 32.602',
+  imgs:[
+    'https://www.honda.com.br/motos/sites/hda/files/2025-08/Imagem-Home-Honda-ADV-Prata-Met%C3%A1lico_0.webp',
+    'https://d1qa0ax3fv1ims.cloudfront.net/catalogo_imagens/duas_rodas/honda-adv_-vermelha_lateral-2_0.png'
+  ]
 },
 
-{ id:'NXR160BRS', nome:'NXR 160 BROS CBS', ano:2026, precoAvista:'R$ 31.273',
-  bonus:'R$ 4.603',
-  img:'https://www.honda.com.br/motos/sites/hda/files/2025-08/Imagem-Home-Honda-NXR-160-Bros-CBS-Azul-Universe-Blue.webp',
-  parcelas:{36:882.21,48:669.64,60:543.66,80:419.74}
+{
+  id:'CG160START', nome:'CG 160 START', ano:2026, precoAvista:'R$ 24.868',
+  imgs:[
+    'https://www.honda.com.br/motos/sites/hda/files/2025-08/Imagem-home-visao-da-lateral-direita-da-honda-cg-160-start.webp',
+    'https://d1qa0ax3fv1ims.cloudfront.net/catalogo_imagens/duas_rodas/cg-160-start-vermelha-lateral.png',
+    'https://d1qa0ax3fv1ims.cloudfront.net/catalogo_imagens/duas_rodas/cg-160-start-preta-lateral.png'
+  ]
 },
 
-{ id:'NXR160ABS', nome:'NXR 160 BROS ABS', ano:2026, precoAvista:'R$ 32.522',
-  bonus:'R$ 4.863',
-  img:'https://www.honda.com.br/motos/sites/hda/files/2025-08/Imagem-Home-Honda-NXR-160-Bros-ABS-Vermelho-Fighting-Red.webp',
-  parcelas:{36:920.17,48:698.45,60:566.20,80:437.81}
+{
+  id:'CG160FAN', nome:'CG 160 FAN', ano:2026, precoAvista:'R$ 26.936',
+  imgs:[
+    'https://www.honda.com.br/motos/sites/hda/files/2025-08/Imagem-Home-Honda-CG-160-Fan-Vermelho-Perolizado.webp',
+    'https://d1qa0ax3fv1ims.cloudfront.net/catalogo_imagens/duas_rodas/preto-metalico-infinite-black-metallic-1.png',
+    'https://www.honda.com.br/motos/sites/hda/files/2025-08/Imagem-Home-Honda-CG-160-Fan-Prata-Met%C3%A1lico.webp'
+  ]
 },
 
-{ id:'XRE190', nome:'XRE 190', ano:2026, precoAvista:'R$ 31.650',
-  bonus:'R$ 2.223',
-  img:'https://www.motopel.com.br/site/wp-content/uploads/2021/02/xre-190-azul.webp',
-  parcelas:{36:951.39,48:722.40,60:586.15,80:453.32}
+{
+  id:'CG160TITAN', nome:'CG 160 TITAN', ano:2026, precoAvista:'R$ 28.737',
+  imgs:[
+    'https://www.honda.com.br/motos/sites/hda/files/2025-08/Imagem-Home-Honda-CG-160-Titan-Cinza-Met%C3%A1lico.webp',
+    'https://d1qa0ax3fv1ims.cloudfront.net/catalogo_imagens/duas_rodas/cg-160-titan-vermelha-lateral.png',
+    'https://d1qa0ax3fv1ims.cloudfront.net/catalogo_imagens/duas_rodas/cg-160-titan-preta-lateral.png'
+  ]
 },
 
-{ id:'SAHARA300ABS', nome:'SAHARA 300 ABS', ano:2026, precoAvista:'R$ 39.935',
-  bonus:'R$ 4.548',
-  img:'https://www.honda.com.br/motos/sites/hda/files/2025-08/Imagem-Home-Sahara-300-Cinza-Met%C3%A1lico.webp',
-  parcelas:{36:1246.00,48:945.78,60:767.84,80:590.32}
+{
+  id:'NXR160ABS', nome:'NXR 160 BROS ABS', ano:2026, precoAvista:'R$ 32.522',
+  imgs:[
+    'https://www.honda.com.br/motos/sites/hda/files/2025-08/Imagem-Home-Honda-NXR-160-Bros-ABS-Vermelho-Fighting-Red.webp',
+    'https://d1qa0ax3fv1ims.cloudfront.net/catalogo_imagens/duas_rodas/2_bros-cinza-lateral-abs.png'
+  ]
 },
 
-{ id:'SAHARA300RALLY', nome:'SAHARA 300 RALLY', ano:2026, precoAvista:'R$ 40.781',
-  bonus:'R$ 4.624',
-  img:'https://www.honda.com.br/motos/sites/hda/files/2025-08/Imagem-Home-Sahara-300-Rally-Vermelho-Victory-Red.webp',
-  parcelas:{0:0}
+{
+  id:'NXR160BRS', nome:'NXR 160 BROS CBS', ano:2026, precoAvista:'R$ 31.273',
+  imgs:[
+    'https://www.honda.com.br/motos/sites/hda/files/2025-08/Imagem-Home-Honda-NXR-160-Bros-CBS-Azul-Universe-Blue.webp',
+    'https://d1qa0ax3fv1ims.cloudfront.net/catalogo_imagens/duas_rodas/bros-preta-3_4te-cbs-lado_5.png'
+  ]
 },
 
-{ id:'SAHARA300ADV', nome:'SAHARA 300 ADV', ano:2026, precoAvista:'R$ 41.177',
-  bonus:'R$ 4.660',
-  img:'https://www.honda.com.br/motos/sites/hda/files/2025-08/Imagem-Home-Sahara-300-Adventure-Bege%20Met%C3%A1lico.webp',
-  parcelas:{36:1287.61,48:977.36,60:793.48,80:612.63}
+{
+  id:'XRE190', nome:'XRE 190', ano:2026, precoAvista:'R$ 31.650',
+  imgs:['https://www.motopel.com.br/site/wp-content/uploads/2021/02/xre-190-azul.webp']
 },
 
-{ id:'XR300LT', nome:'XR 300L TORNADO', ano:2026, precoAvista:'R$ 40.019',
-  bonus:'R$ 6.658',
-  img:'https://www.motopel.com.br/site/wp-content/uploads/2021/02/XR-300L-Tornado.webp',
-  parcelas:{36:1237.55,48:939.36,60:762.64,80:588.81}
+{
+  id:'XR300LT', nome:'XR 300L TORNADO', ano:2026, precoAvista:'R$ 40.019',
+  imgs:['https://www.motopel.com.br/site/wp-content/uploads/2021/02/XR-300L-Tornado.webp']
 },
 
-{ id:'PCX', nome:'PCX CBS', ano:2026, precoAvista:'R$ 24.357',
-  bonus:'R$ 2.420',
-  img:'https://www.honda.com.br/motos/sites/hda/files/2025-08/imagem-home-honda-pcx-branco_0.webp',
-  parcelas:{36:761.86,60:469.49}
+{
+  id:'CRF300F', nome:'CRF 300F', ano:2026, precoAvista:'R$ 30.580',
+  imgs:[
+    'https://www.motopel.com.br/site/wp-content/uploads/2025/08/capa-crf-300f.webp',
+    'https://www.honda.com.br/motos/sites/hda/files/2025-08/crf300f-cor-2.webp',
+    'https://www.honda.com.br/motos/sites/hda/files/2025-08/crf300f-cor-3.webp'
+  ]
 },
 
-{ id:'PCXABS', nome:'PCX ABS', ano:2026, precoAvista:'R$ 26.533',
-  bonus:'R$ 2.616',
-  img:'https://www.honda.com.br/motos/sites/hda/files/2025-08/visao-da-lateral-direita-da-honda-pcx-azul.webp',
-  parcelas:{36:835.75,60:515.03}
+{
+  id:'CB300FTWABS', nome:'CB 300F TWISTER ABS', ano:2026, precoAvista:'R$ 34.116',
+  imgs:[
+    'https://www.motopel.com.br/site/wp-content/uploads/2021/02/cb-300F-twister-azul.webp',
+    'https://d1qa0ax3fv1ims.cloudfront.net/catalogo_imagens/duas_rodas/lateral-vermelha_1.png'
+  ]
 },
 
-{ id:'HONADA_ADV', nome:'Honda ADV', ano:2026, precoAvista:'R$ 32.602',
-  bonus:'R$ 3.434',
-  img:'https://www.honda.com.br/motos/sites/hda/files/2025-08/Imagem-Home-Honda-ADV-Prata-Met%C3%A1lico_0.webp',
-  parcelas:{36:1031.61,60:635.73}
+{
+  id:'CB300FTWCBS', nome:'CB 300F TWISTER CBS', ano:2026, precoAvista:'R$ 32.941',
+  imgs:[
+    'https://www.motopel.com.br/site/wp-content/uploads/2021/02/cb-300F-twister-cinza.webp',
+    'https://d1qa0ax3fv1ims.cloudfront.net/catalogo_imagens/duas_rodas/lateral-vermelha-1_0.png'
+  ]
 },
 
-{ id:'ELITE125', nome:'Elite 125', ano:2026, precoAvista:'R$ 19.368',
-  bonus:'R$ 2.250',
-  img:'https://www.honda.com.br/motos/sites/hda/files/2025-08/Imagem-Home-Elite-125-Vermelho-Maceio-Red_0.webp',
-  parcelas:{36:587.20,60:361.86}
+{
+  id:'SAHARA300ABS', nome:'SAHARA 300 ABS', ano:2026, precoAvista:'R$ 39.935',
+  imgs:['https://www.honda.com.br/motos/sites/hda/files/2025-08/Imagem-Home-Sahara-300-Cinza-Met%C3%A1lico.webp']
 },
 
-{ id:'POP110', nome:'POP 110i ES +10', ano:2026, precoAvista:'R$ 16.831',
-  bonus:'R$ 2.376',
-  img:'https://www.honda.com.br/motos/sites/hda/files/2025-08/Imagem-Home-Pop-110i-Es-Vermelho-Fighting-Red_0.webp',
-  parcelas:{36:436.26,48:331.14,60:268.84,80:207.57}
+{
+  id:'SAHARA300RALLY', nome:'SAHARA 300 RALLY', ano:2026, precoAvista:'R$ 40.781',
+  imgs:['https://www.honda.com.br/motos/sites/hda/files/2025-08/Imagem-Home-Sahara-300-Rally-Vermelho-Victory-Red.webp']
 },
 
-{ id:'CRF300F', nome:'CRF 300F', ano:2026, precoAvista:'R$ 30.580',
-  bonus:'R$ 2.716',
-  img:'https://www.motopel.com.br/site/wp-content/uploads/2025/08/capa-crf-300f.webp',
-  parcelas:{36:891.36,48:676.58,60:549.29,80:424.10}
+{
+  id:'SAHARA300ADV', nome:'SAHARA 300 ADV', ano:2026, precoAvista:'R$ 41.177',
+  imgs:['https://www.honda.com.br/motos/sites/hda/files/2025-08/Imagem-Home-Sahara-300-Adventure-Bege%20Met%C3%A1lico.webp']
 },
 
-// LINHA ADVANCE — 72 MESES
-{ id:'CB500HOR', nome:'CB 500 HORNET', ano:2026, precoAvista:'R$ 52.185',
-  bonus:'R$ 1.200',
-  img:'https://www.motopel.com.br/site/wp-content/uploads/2025/07/capa-hornet-500-2026-branca.webp',
-  parcelas:{72:780.03}
+{
+  id:'CB500HOR', nome:'CB 500 HORNET', ano:2026, precoAvista:'R$ 52.185',
+  imgs:[
+    'https://www.motopel.com.br/site/wp-content/uploads/2025/07/capa-hornet-500-2026-branca.webp',
+    'https://d1qa0ax3fv1ims.cloudfront.net/catalogo_imagens/duas_rodas/hornet-500_red_lateral_0.png',
+    'https://d1qa0ax3fv1ims.cloudfront.net/catalogo_imagens/duas_rodas/hornet-500_black_lateral_0.png'
+  ]
 },
 
-{ id:'NX500', nome:'NX 500', ano:2026, precoAvista:'R$ 55.317',
-  img:'https://www.motopel.com.br/site/wp-content/uploads/2025/07/capa-nx-500-2026-vermelha.webp',
-  parcelas:{72:829.43}
+{
+  id:'NX500', nome:'NX 500', ano:2026, precoAvista:'R$ 55.317',
+  imgs:[
+    'https://www.motopel.com.br/site/wp-content/uploads/2025/07/capa-nx-500-2026-vermelha.webp',
+    
+  ]
 },
 
-{ id:'NC750X', nome:'NC 750X', ano:2026, precoAvista:'R$ 67.596',
-  bonus:'R$ 1.200',
-  img:'https://www.motopel.com.br/site/wp-content/uploads/2021/02/nc-750x-MT-prata.png.webp',
-  parcelas:{72:971.39}
+{
+  id:'NC750X', nome:'NC 750X', ano:2026, precoAvista:'R$ 67.596',
+  imgs:[
+    'https://www.motopel.com.br/site/wp-content/uploads/2021/02/nc-750x-MT-prata.png.webp',
+    'https://d1qa0ax3fv1ims.cloudfront.net/catalogo_imagens/duas_rodas/base-honda-nc750x1115autocopy2_0.png'
+  ]
 },
 
-{ id:'CB1000R70', nome:'CB 1000R 70%', ano:2026, precoAvista:'R$ 92.839',
-  bonus:'R$ 0,00',
-  img:'https://www.motopel.com.br/site/wp-content/uploads/2021/02/cb-1000R-black-edition.png.webp',
-  parcelas:{72:994.93}
+{
+  id:'CB1000R70', nome:'CB 1000R 70%', ano:2026, precoAvista:'R$ 92.839',
+  imgs:[
+    'https://www.motopel.com.br/site/wp-content/uploads/2021/02/cb-1000R-black-edition.png.webp',
+    'https://d1qa0ax3fv1ims.cloudfront.net/catalogo_imagens/duas_rodas/2023-cb1000r_ed_studio_red_rh-side_l_0.png'
+  ]
 },
 
-{ id:'CRF1100L', nome:'CRF 1100L AFRICA TWIN 70%', ano:2026, precoAvista:'R$ 100.316',
-  bonus:'R$ 0,00',
-  img:'https://www.motopel.com.br/site/wp-content/uploads/2020/02/capa-africa-twin-mt.webp',
-  parcelas:{72:1022.90}
+{
+  id:'CRF1100L', nome:'CRF 1100L AFRICA TWIN', ano:2026, precoAvista:'R$ 100.316',
+  imgs:[
+    'https://www.motopel.com.br/site/wp-content/uploads/2020/02/capa-africa-twin-mt.webp',
+    'https://d1qa0ax3fv1ims.cloudfront.net/catalogo_imagens/duas_rodas/crf_1100l_africa_twinmt_preto_fosco_hda_1-1.png'
+  ]
 }
+
 ];
 
-/* APLICAÇÃO DO TEMA */
 document.getElementById('logo-campanha').src = CONFIG_TEMA.logoURL;
 document.getElementById('tema-label').innerText = CONFIG_TEMA.nomeCampanha;
 document.getElementById('titulo-principal').innerText = CONFIG_TEMA.tituloSite;
 
-/* RENDERIZAR CARDS */
 function renderCards() {
     const grid = document.getElementById('motoGrid');
-    MOTOS.forEach(m => {
+    MOTOS.forEach((m, index) => {
         const card = document.createElement('div');
         card.className = 'moto-card';
         card.innerHTML = `
-            <div class="moto-stage" onclick="executarAnimacao(this)">
+            <div class="moto-stage" onclick="executarAnimacao(this, ${index})" data-current-img="0">
                 <div class="placa-ano">MODELO ${CONFIG_TEMA.anoVigente}</div>
                 <img src="${CONFIG_TEMA.enfeiteIcone}" class="decoracao-pendurada">
                 <div class="burnout-smoke"></div>
                 <div class="pneu-mark"></div>
-                <img src="${m.img}" class="moto-img" alt="${m.nome}">
-                <button class="btn-firework" onclick="clicouFogo(event, this)">🧨</button>
+                <img src="${m.imgs[0]}" class="moto-img">
             </div>
             <div class="card-info">
                 <h3 class="moto-name">${m.nome}</h3>
@@ -397,60 +550,58 @@ function renderCards() {
                     <a href="financiamento.html?moto=${m.id}" class="btn-action btn-fin">Financiar</a>
                     <a href="Consórcio.html?moto=${m.id}" class="btn-action btn-cons">Consórcio</a>
                 </div>
-            </div>
-        `;
+            </div>`;
         grid.appendChild(card);
     });
 }
 
-/* LÓGICA DE ANIMAÇÃO DA MOTO */
-function executarAnimacao(stage) {
-    const moto = stage.querySelector('.moto-img');
+function executarAnimacao(stage, motoIndex) {
+    const motoImgElement = stage.querySelector('.moto-img');
     const smoke = stage.querySelector('.burnout-smoke');
     const mark = stage.querySelector('.pneu-mark');
+    const motoData = MOTOS[motoIndex];
 
-    if (moto.classList.contains('animate-drive')) return;
+    if (motoImgElement.classList.contains('animate-drive')) return;
 
-    // 1. Inicia fumaça e marca de pneu
+    // Fumaça e Marca
     smoke.style.opacity = "1";
     mark.style.width = "120px";
     mark.style.transition = "width 0.4s";
 
-    // 2. Acelera após pequeno delay de burnout
-    setTimeout(() => {
-        moto.classList.add('animate-drive');
-        smoke.style.opacity = "0";
+    // Inicia Corrida
+    setTimeout(() => { 
+        motoImgElement.classList.add('animate-drive'); 
+        smoke.style.opacity = "0"; 
     }, 500);
 
-    // 3. Reset para poder clicar de novo
+    // TROCA A COR quando estiver fora da tela (aproximadamente 1.3s)
     setTimeout(() => {
-        moto.classList.remove('animate-drive');
-        mark.style.width = "0";
-    }, 3000);
+        if(motoData.imgs.length > 1) {
+            let currentIdx = parseInt(stage.getAttribute('data-current-img'));
+            let nextIdx = (currentIdx + 1) % motoData.imgs.length;
+            
+            motoImgElement.src = motoData.imgs[nextIdx];
+            stage.setAttribute('data-current-img', nextIdx);
+        }
+    }, 1300);
+
+    // Reset da animação
+    setTimeout(() => { 
+        motoImgElement.classList.remove('animate-drive'); 
+        mark.style.width = "0"; 
+    }, 2800);
 }
 
-function clicouFogo(e, btn) {
-    e.stopPropagation();
-    btn.innerText = "💥";
-    setTimeout(() => btn.style.display = "none", 500);
-}
-
-/* BACKGROUND DE FOGOS (CANVAS) */
+// CANVAS FOGOS
 const canvas = document.getElementById('bg-canvas');
 const ctx = canvas.getContext('2d');
 let particles = [];
-
-function resize() {
-    canvas.width = window.innerWidth;
-    canvas.height = window.innerHeight;
-}
+function resize() { canvas.width = window.innerWidth; canvas.height = window.innerHeight; }
 window.addEventListener('resize', resize);
 resize();
 
 class Particle {
-    constructor() {
-        this.reset();
-    }
+    constructor() { this.reset(); }
     reset() {
         this.x = Math.random() * canvas.width;
         this.y = canvas.height + 10;
@@ -461,34 +612,24 @@ class Particle {
         this.alpha = 1;
     }
     update() {
-        this.x += this.vx;
         this.y += this.vy;
-        if (this.y < 100) this.alpha -= 0.01;
+        if (this.y < 150) this.alpha -= 0.01;
         if (this.alpha <= 0) this.reset();
     }
     draw() {
         ctx.globalAlpha = this.alpha;
         ctx.fillStyle = this.color;
-        ctx.beginPath();
-        ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
-        ctx.fill();
+        ctx.beginPath(); ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2); ctx.fill();
     }
 }
-
-for(let i=0; i<50; i++) particles.push(new Particle());
-
+for(let i=0; i<40; i++) particles.push(new Particle());
 function animateBG() {
     ctx.clearRect(0, 0, canvas.width, canvas.height);
-    particles.forEach(p => {
-        p.update();
-        p.draw();
-    });
+    particles.forEach(p => { p.update(); p.draw(); });
     requestAnimationFrame(animateBG);
 }
-
 renderCards();
 animateBG();
 </script>
-
 </body>
 </html>
