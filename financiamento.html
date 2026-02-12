@@ -3,125 +3,229 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Simular Financiamento</title>
+<title>Simular Financiamento - Especial Carnaval</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800&display=swap" rel="stylesheet">
+
 <style>
-    body{
-        margin:0;
-        font-family:Arial, sans-serif;
-        background:#f2f2f7;
-        padding:20px;
-        animation: fadeIn .6s ease-in-out;
-    }
-    @keyframes fadeIn{
-        from{opacity:0; transform:translateY(12px);}
-        to{opacity:1; transform:translateY(0);}
-    }
-    .card{
-        background:white;
-        padding:18px;
-        border-radius:14px;
-        box-shadow:0 6px 18px rgba(0,0,0,0.1);
-        margin-bottom:20px;
-        animation: pop .5s ease;
-    }
-    @keyframes pop{
-        from{transform:scale(.96); opacity:0;}
-        to{transform:scale(1); opacity:1;}
-    }
-    h2{
-        margin:0 0 10px;
-        font-size:22px;
-    }
-    label{
-        font-weight:600;
-        margin-top:12px;
-        display:block;
-    }
-    input, select{
-        width:100%;
-        padding:12px;
-        border-radius:10px;
-        border:1px solid #ccc;
-        margin-top:4px;
-        font-size:16px;
-        background:#fafafa;
-        transition:0.2s;
-    }
-    input:focus, select:focus{
-        border-color:#c8102e;
-        background:white;
-        box-shadow:0 0 6px rgba(200,16,46,0.3);
-    }
-    button{
-        width:100%;
-        padding:14px;
-        background:#c8102e;
-        border:none;
-        margin-top:20px;
-        border-radius:12px;
-        font-size:18px;
-        font-weight:700;
-        color:white;
-        cursor:pointer;
-        transition:.25s;
-        animation: pop .5s ease;
-    }
-    button:active{
-        transform:scale(0.96);
-        background:#a00b23;
-    }
-    .moto-name{
-        font-weight:800;
-        font-size:19px;
-        margin-bottom:8px;
-        color:#c8102e;
-        text-align:center;
+    /* --- CONFIGURAÇÕES GERAIS --- */
+    body {
+        margin: 0;
+        font-family: 'Montserrat', sans-serif; /* Fonte mais elegante */
+        /* Fundo Gradiente Carnaval Noturno */
+        background: linear-gradient(135deg, #2e003e 0%, #c8102e 100%);
+        min-height: 100vh;
+        padding: 20px;
+        color: #333;
+        overflow-x: hidden;
     }
 
-    .carousel {
-        width:100%;
-        height:220px;
-        overflow:hidden;
-        border-radius:12px;
-        margin-bottom:15px;
-        position:relative;
+    /* Partículas de fundo (Confete sutil via CSS) */
+    body::before {
+        content: "";
+        position: fixed;
+        top: 0; left: 0; width: 100%; height: 100%;
+        background-image: 
+            radial-gradient(#ffb700 15%, transparent 16%),
+            radial-gradient(#00d2ff 15%, transparent 16%);
+        background-size: 60px 60px;
+        background-position: 0 0, 30px 30px;
+        opacity: 0.1;
+        pointer-events: none;
+        z-index: 0;
     }
-    .carousel-track {
-        display:flex;
-        width:max-content;
-        animation: scroll 18s linear infinite;
+
+    /* Animação de entrada */
+    @keyframes slideUp {
+        from { opacity: 0; transform: translateY(30px); }
+        to { opacity: 1; transform: translateY(0); }
     }
-    .carousel-track img {
-        width:100%;
-        height:220px;
-        object-fit:cover;
+
+    /* --- ESTILO DOS CARDS (Efeito Vidro/Glassmorphism) --- */
+    .card {
+        background: rgba(255, 255, 255, 0.95);
+        backdrop-filter: blur(10px);
+        padding: 25px;
+        border-radius: 20px;
+        box-shadow: 0 10px 40px rgba(0,0,0,0.4);
+        margin-bottom: 25px;
+        position: relative;
+        z-index: 1;
+        border: 1px solid rgba(255, 255, 255, 0.5);
+        animation: slideUp 0.6s ease-out;
+    }
+
+    /* Detalhe colorido no topo do card */
+    .card::after {
+        content: "";
+        position: absolute;
+        top: 0; left: 0; right: 0;
+        height: 6px;
+        background: linear-gradient(90deg, #ffb700, #c8102e, #8a2be2);
+        border-radius: 20px 20px 0 0;
+    }
+
+    h2 {
+        margin: 10px 0 20px;
+        font-size: 24px;
+        text-align: center;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        background: linear-gradient(45deg, #c8102e, #4a0072);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        font-weight: 800;
+    }
+
+    /* --- NOME DA MOTO EM DESTAQUE --- */
+    .moto-name {
+        font-weight: 800;
+        font-size: 22px;
+        margin-bottom: 20px;
+        color: white;
+        text-align: center;
+        background: linear-gradient(90deg, #c8102e, #ff0055);
+        padding: 12px;
+        border-radius: 50px;
+        box-shadow: 0 4px 15px rgba(200, 16, 46, 0.4);
+        text-transform: uppercase;
+    }
+
+    /* --- FORMULÁRIO --- */
+    label {
+        font-weight: 700;
+        margin-top: 15px;
+        display: block;
+        font-size: 14px;
+        color: #444;
+        text-transform: uppercase;
+    }
+
+    input, select {
+        width: 100%;
+        padding: 15px;
+        border-radius: 12px;
+        border: 2px solid #eee;
+        margin-top: 6px;
+        font-size: 16px;
+        background: #f9f9f9;
+        transition: 0.3s;
+        box-sizing: border-box; /* Previne quebrar layout */
+        font-family: 'Montserrat', sans-serif;
+    }
+
+    input:focus, select:focus {
+        border-color: #8a2be2;
+        background: white;
+        box-shadow: 0 0 15px rgba(138, 43, 226, 0.2);
+        outline: none;
+    }
+
+    /* --- BOTÃO ANIMADO --- */
+    button {
+        width: 100%;
+        padding: 18px;
+        background: linear-gradient(45deg, #c8102e, #ff0055, #8a2be2);
+        background-size: 200% auto;
+        border: none;
+        margin-top: 30px;
+        border-radius: 50px;
+        font-size: 18px;
+        font-weight: 800;
+        color: white;
         cursor: pointer;
-        transition:.3s;
+        transition: 0.5s;
+        box-shadow: 0 5px 20px rgba(200, 16, 46, 0.5);
+        text-transform: uppercase;
+        animation: gradientMove 3s infinite alternate;
     }
+
+    @keyframes gradientMove {
+        0% { background-position: 0% 50%; }
+        100% { background-position: 100% 50%; }
+    }
+
+    button:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 8px 25px rgba(200, 16, 46, 0.7);
+    }
+
+    button:active {
+        transform: scale(0.98);
+    }
+
+    /* --- CARROSSEL --- */
+    .carousel {
+        width: 100%;
+        height: 240px;
+        overflow: hidden;
+        border-radius: 15px;
+        margin-bottom: 20px;
+        position: relative;
+        background: white;
+        border: 4px solid #fff;
+        box-shadow: inset 0 0 20px rgba(0,0,0,0.05);
+    }
+
+    .carousel-track {
+        display: flex;
+        width: max-content;
+        animation: scroll 20s linear infinite;
+    }
+
+    .carousel-track img {
+        height: 240px;
+        width: auto; /* Mantém proporção */
+        min-width: 300px;
+        object-fit: cover;
+        cursor: pointer;
+        transition: 0.3s;
+    }
+
     .carousel-track img:hover {
-        transform:scale(1.03);
+        transform: scale(1.05);
+        filter: brightness(1.1);
     }
+
     @keyframes scroll {
         0%   { transform: translateX(0); }
         100% { transform: translateX(-50%); }
     }
+
+    /* --- ZOOM VIEW --- */
     #zoomView {
-        position:fixed;
-        top:0;
-        left:0;
-        width:100%;
-        height:100%;
-        background:rgba(0,0,0,0.85);
-        display:none;
-        justify-content:center;
-        align-items:center;
-        z-index:9999;
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(46, 0, 62, 0.95); /* Roxo escuro */
+        backdrop-filter: blur(5px);
+        display: none;
+        justify-content: center;
+        align-items: center;
+        z-index: 9999;
+        animation: fadeIn 0.3s;
     }
+
     #zoomView img {
-        width:90%;
-        max-width:480px;
-        border-radius:12px;
+        width: 95%;
+        max-width: 600px;
+        border-radius: 15px;
+        border: 2px solid white;
+        box-shadow: 0 0 50px rgba(0,0,0,0.8);
     }
+
+    @keyframes fadeIn {
+        from { opacity: 0; }
+        to { opacity: 1; }
+    }
+
+    /* Ícones decorativos nos inputs (opcional, feito via CSS puro) */
+    input[name="nome"] { border-left: 5px solid #ffb700; }
+    input[name="cpf"] { border-left: 5px solid #c8102e; }
+    input[name="whatsapp"] { border-left: 5px solid #25d366; }
+
 </style>
 </head>
 <body>
@@ -129,19 +233,17 @@
 <div class="card">
     <h2 id="tituloMoto">Carregando...</h2>
 
-    <!-- CARROSSEL -->
     <div class="carousel">
         <div class="carousel-track" id="carouselTrack"></div>
     </div>
 
-    <!-- ZOOM VIEW -->
     <div id="zoomView" onclick="this.style.display='none'">
         <img id="zoomImg">
     </div>
 </div>
 
 <div class="card">
-    <h2>Simulação de Financiamento</h2>
+    <h2>🎊 Simulação de Financiamento 🎊</h2>
     <p class="moto-name" id="motoEscolhida">Carregando...</p>
 
     <form id="finForm">
@@ -179,7 +281,7 @@
 
         <input type="hidden" name="moto" id="motoInput">
 
-        <button>Enviar simulação para WhatsApp</button>
+        <button>🎭 Enviar simulação para WhatsApp</button>
     </form>
 </div>
 
@@ -260,7 +362,7 @@ function abrirZoom(src){
 *Tipo:* ${data.tipo}
 *Habilitação:* ${data.habilitacao}
 *Entrada:* R$ ${data.entrada || "0"}`;
-        const zap = "5594992781498";
+        const zap = "5594992588172";
         const url = `https://wa.me/${zap}?text=${encodeURIComponent(msg)}`;
         window.location.href = url;
     });
