@@ -3,18 +3,19 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width,initial-scale=1" />
-    <title>Honda Revemar — Carnaval 2026</title>
+    <title>Honda Revemar — CPF Aprovado</title>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700;900&display=swap" rel="stylesheet">
     <style>
         :root {
+            /* Cores do Novo Tema: Promoção CPF Aprovado */
             --red-honda: #c8102e;
-            --carnaval-purple: #4b0082;
-            --carnaval-pink: #ff007f;
-            --carnaval-yellow: #ffd700;
-            --carnaval-green: #00fa9a;
-            --carnaval-blue: #00bfff;
+            --primary-blue: #0033a0;
+            --dark-blue: #001233;
+            --cyan-glow: #00e5ff;
+            --gold-text: #ffcc00;
+            --gold-dark: #b8860b;
             --card-white: #ffffff;
-            --bg-dark: #1a0b2e;
+            --bg-dark: #000814;
         }
 
         * { box-sizing: border-box; -webkit-font-smoothing: antialiased; }
@@ -22,37 +23,49 @@
         body {
             margin: 0;
             font-family: 'Montserrat', sans-serif;
-            background: linear-gradient(135deg, #1a0b2e 0%, #000000 100%);
+            background: linear-gradient(135deg, var(--bg-dark) 0%, #001845 100%);
             color: #fff;
             overflow-x: hidden;
         }
 
-        /* FUNDO DE CONFETES (Canvas) */
+        /* FUNDO DE PARTÍCULAS (Canvas) */
         #bg-canvas {
             position: fixed;
             top: 0; left: 0;
             width: 100%; height: 100%;
             z-index: -1;
-            opacity: 0.6;
+            opacity: 0.5;
         }
 
         header {
-            background: rgba(20, 10, 40, 0.95);
+            background: rgba(0, 10, 30, 0.95);
             padding: 15px 5%;
             display: flex;
             justify-content: space-between;
             align-items: center;
-            /* Borda colorida de carnaval */
             border-bottom: 4px solid transparent;
-            border-image: linear-gradient(to right, var(--carnaval-green), var(--carnaval-yellow), var(--carnaval-pink), var(--carnaval-blue)) 1;
+            border-image: linear-gradient(to right, var(--primary-blue), var(--cyan-glow), var(--gold-text), var(--primary-blue)) 1;
             position: sticky;
             top: 0; z-index: 100;
-            box-shadow: 0 5px 20px rgba(0,0,0,0.5);
+            box-shadow: 0 5px 20px rgba(0,0,0,0.8);
         }
 
         .logo-campanha {
             height: 45px;
-            filter: drop-shadow(0 0 5px rgba(255,255,255,0.5));
+            filter: drop-shadow(0 0 5px rgba(0, 229, 255, 0.5));
+        }
+
+        .header-right {
+            text-align: right;
+            display: flex;
+            flex-direction: column;
+            align-items: flex-end;
+        }
+
+        .logo-cpf-aprovado {
+            height: 60px; /* Tamanho da logo no canto superior direito */
+            margin-top: 8px;
+            filter: drop-shadow(0 0 10px rgba(255, 204, 0, 0.4));
         }
 
         /* AREA DO VENDEDOR NO TOPO */
@@ -62,18 +75,27 @@
             gap: 20px;
             padding: 40px 5% 10px 5%;
             position: relative;
+            
         }
+    .logo-extra-topo {
+    position: absolute;
+    right: 25px;
+    top: 40%;
+    transform: translateY(-50%);
+    height: 450px;  /* TRIPLO DO TAMANHO */
+    width: auto;
+    object-fit: contain;
+}
 
         .vendedor-moldura {
             position: relative;
             width: 100px;
             height: 100px;
             border-radius: 50%;
-            /* Borda gradiente rotativa */
-            background: linear-gradient(45deg, var(--carnaval-green), var(--carnaval-pink), var(--carnaval-yellow));
+            background: linear-gradient(45deg, var(--primary-blue), var(--cyan-glow), var(--gold-text));
             padding: 4px;
-            box-shadow: 0 0 25px rgba(255, 0, 127, 0.6);
-            animation: pulseFolia 2s infinite;
+            box-shadow: 0 0 25px rgba(0, 229, 255, 0.5);
+            animation: pulseTech 2s infinite;
         }
 
         .vendedor-moldura img {
@@ -92,18 +114,18 @@
 
         .vendedor-info .cargo {
             font-size: 0.8rem;
-            color: var(--carnaval-yellow);
+            color: var(--cyan-glow);
             text-transform: uppercase;
             letter-spacing: 2px;
             font-weight: 700;
-            text-shadow: 0 0 5px rgba(255, 215, 0, 0.5);
+            text-shadow: 0 0 5px rgba(0, 229, 255, 0.4);
         }
 
         .vendedor-info .nome-vendedor {
             font-size: 1.8rem;
             font-weight: 900;
             color: #fff;
-            text-shadow: 2px 2px 0px var(--carnaval-purple);
+            text-shadow: 2px 2px 0px var(--primary-blue);
         }
 
         /* BOTÃO DO INSTAGRAM */
@@ -123,6 +145,7 @@
             box-shadow: 0 4px 10px rgba(220, 39, 67, 0.4);
             transition: transform 0.2s;
         }
+        
 
         .btn-insta:hover {
             transform: scale(1.05);
@@ -133,22 +156,17 @@
             height: 16px; 
             fill: currentColor;
         }
+        .logo-extra-topo {
+    max-height: 90px;
+    max-width: 150px;
+    object-fit: contain;
+    margin-left: auto;
+}
 
-        .sparkle {
-            position: absolute;
-            font-size: 24px;
-            animation: bounceSparkle 1.5s infinite ease-in-out;
-        }
-
-        @keyframes bounceSparkle {
-            0%, 100% { transform: translateY(0) rotate(0deg); }
-            50% { transform: translateY(-10px) rotate(20deg); }
-        }
-
-        @keyframes pulseFolia {
-            0% { box-shadow: 0 0 15px var(--carnaval-pink); transform: scale(1); }
-            50% { box-shadow: 0 0 30px var(--carnaval-green); transform: scale(1.05); }
-            100% { box-shadow: 0 0 15px var(--carnaval-blue); transform: scale(1); }
+        @keyframes pulseTech {
+            0% { box-shadow: 0 0 15px var(--primary-blue); transform: scale(1); }
+            50% { box-shadow: 0 0 30px var(--cyan-glow); transform: scale(1.05); }
+            100% { box-shadow: 0 0 15px var(--primary-blue); transform: scale(1); }
         }
 
         .container { max-width: 1200px; margin: 0 auto; padding: 20px; }
@@ -160,11 +178,12 @@
             margin: 40px 0 60px 0;
             text-transform: uppercase;
             letter-spacing: -1px;
-            background: linear-gradient(to right, #fff, var(--carnaval-yellow), #fff);
+            background: linear-gradient(to right, #fff, var(--gold-text), #fff);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
-            border-bottom: 2px dashed rgba(255,255,255,0.2);
+            border-bottom: 2px dashed rgba(0, 229, 255, 0.3);
             padding-bottom: 20px;
+            filter: drop-shadow(0 2px 4px rgba(0,0,0,0.8));
         }
 
         .moto-grid {
@@ -179,13 +198,13 @@
             overflow: hidden;
             position: relative;
             border: none;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.8);
             transition: transform 0.3s;
         }
         
         .moto-card:hover {
             transform: translateY(-5px);
-            box-shadow: 0 15px 40px rgba(75, 0, 130, 0.4);
+            box-shadow: 0 15px 40px rgba(0, 229, 255, 0.3);
         }
 
         /* Topo do Card com gradiente sutil */
@@ -193,13 +212,13 @@
             content: '';
             position: absolute;
             top: 0; left: 0; right: 0; height: 5px;
-            background: linear-gradient(to right, var(--carnaval-green), var(--carnaval-pink), var(--carnaval-blue));
+            background: linear-gradient(to right, var(--primary-blue), var(--cyan-glow), var(--gold-text));
             z-index: 20;
         }
 
         .moto-stage {
             height: 250px;
-            background: radial-gradient(circle at center, #fff 0%, #f0f0f0 100%);
+            background: radial-gradient(circle at center, #ffffff 0%, #e0f7fa 100%);
             position: relative;
             display: flex;
             align-items: center;
@@ -211,30 +230,30 @@
         .placa-ano {
             position: absolute;
             top: 15px; left: 15px;
-            background: var(--carnaval-purple);
-            color: var(--carnaval-yellow);
+            background: var(--dark-blue);
+            color: var(--cyan-glow);
             padding: 5px 15px;
-            font-weight: 800;
-            border-radius: 20px;
+            font-weight: 900;
+            border-radius: 5px;
             font-size: 0.8rem;
             z-index: 10;
-            box-shadow: 0 5px 10px rgba(0,0,0,0.2);
-            border: 1px solid var(--carnaval-yellow);
+            box-shadow: 0 5px 10px rgba(0,0,0,0.3);
+            border: 1px solid var(--cyan-glow);
+            letter-spacing: 1px;
         }
 
         .decoracao-pendurada {
             position: absolute;
             top: 0; right: 20px;
             width: 70px;
-            animation: swing 3s ease-in-out infinite;
-            transform-origin: top;
+            animation: floating 4s ease-in-out infinite;
             z-index: 5;
             filter: drop-shadow(2px 5px 5px rgba(0,0,0,0.2));
         }
 
-        @keyframes swing {
-            0%, 100% { transform: rotate(-10deg); }
-            50% { transform: rotate(10deg); }
+        @keyframes floating {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(10px); }
         }
 
         .moto-img {
@@ -248,7 +267,7 @@
             position: absolute;
             bottom: 40px; left: 50%;
             width: 100px; height: 40px;
-            background: radial-gradient(circle, rgba(255, 0, 127, 0.4) 0%, transparent 70%); /* Fumaça rosa */
+            background: radial-gradient(circle, rgba(0, 229, 255, 0.4) 0%, transparent 70%); /* Fumaça azul cyan */
             filter: blur(10px);
             opacity: 0;
             z-index: 2;
@@ -278,27 +297,29 @@
         }
 
         .card-info { padding: 25px; color: #111; text-align: center; background: #fff; }
-        .moto-name { font-size: 1.5rem; font-weight: 900; margin: 0; color: #333; }
-        .moto-price { color: var(--red-honda); font-size: 1.2rem; font-weight: 700; margin: 10px 0; }
+        .moto-name { font-size: 1.5rem; font-weight: 900; margin: 0; color: var(--dark-blue); }
+        .moto-price { color: var(--primary-blue); font-size: 1.3rem; font-weight: 800; margin: 10px 0; }
 
         .btn-box { display: flex; gap: 10px; margin-top: 20px; }
         .btn-action {
-            flex: 1; padding: 15px; border-radius: 50px; /* Botões arredondados */
+            flex: 1; padding: 15px; border-radius: 5px; /* Botões mais retos e modernos */
             text-decoration: none; font-weight: 800;
             text-transform: uppercase; font-size: 0.75rem;
             transition: 0.3s; text-align: center;
+            letter-spacing: 0.5px;
         }
         .btn-fin { 
-            background: var(--red-honda); color: white; 
-            box-shadow: 0 5px 15px rgba(200, 16, 46, 0.3);
+            background: linear-gradient(90deg, var(--primary-blue), #0044cc); color: white; 
+            box-shadow: 0 5px 15px rgba(0, 51, 160, 0.4);
+            border: 1px solid var(--primary-blue);
         }
-        .btn-fin:hover { background: #a60d26; transform: scale(1.05); }
+        .btn-fin:hover { background: var(--dark-blue); transform: scale(1.05); }
 
         .btn-cons { 
-            background: var(--bg-dark); color: white; 
-            border: 1px solid var(--bg-dark);
+            background: #fff; color: var(--primary-blue); 
+            border: 2px solid var(--primary-blue);
         }
-        .btn-cons:hover { background: #fff; color: var(--bg-dark); }
+        .btn-cons:hover { background: var(--primary-blue); color: #fff; transform: scale(1.05); }
 
         .agente-ia {
             position: fixed;
@@ -326,6 +347,8 @@
             .vendedor-moldura { width: 80px; height: 80px; }
             .agente-texto { display: none; }
             .section-title { font-size: 2rem; margin: 20px 0; }
+            header { flex-direction: column; gap: 10px; align-items: flex-start; }
+            .header-right { align-items: flex-start; text-align: left; }
         }
     </style>
 </head>
@@ -335,22 +358,21 @@
 
 <header>
     <img src="" id="logo-campanha" class="logo-campanha" alt="Honda Campanha">
-    <div style="text-align: right">
-        <div style="font-weight: 900; color: #fff; text-shadow: 1px 1px 0 var(--red-honda);">REVEMAR HONDA</div>
-        <div id="tema-label" style="font-size: 0.75rem; color: var(--carnaval-green); font-weight: bold; letter-spacing: 1px;"></div>
-    </div>
+    <div class="header-right">
+        <div style="font-weight: 900; color: #fff; text-shadow: 1px 1px 0 var(--primary-blue); font-size: 1.2rem;">REVEMAR HONDA</div>
+        <div id="tema-label" style="font-size: 0.8rem; color: var(--gold-text); font-weight: bold; letter-spacing: 1px; margin-bottom: 5px;"></div>
+       
 </header>
 
 <div class="vendedor-topo">
     <div class="vendedor-moldura">
-        <span class="sparkle" style="top:-15px; right:-10px;">🎊</span>
-        <span class="sparkle" style="bottom:-5px; left:-15px; animation-delay: 1s;">🎭</span>
         <img src="https://image2url.com/images/1763321623834-3529dfca-89a1-481c-9b53-be3324834b67.jpg" alt="Vendedor">
     </div>
+    <img src="https://image2url.com/r2/default/images/1772572693263-8f07cbb3-a571-44e4-8412-081a82ed80d9.blob" class="logo-extra-topo">
     <div class="vendedor-info">
         <span class="cargo">Consultor de Vendas</span>
         <span class="nome-vendedor">Lucas Honda</span>
-        <span style="font-size: 0.8rem; color: #ddd;">Caia na folia de moto nova!</span>
+        <span style="font-size: 0.8rem; color: #aaa;">Condições exclusivas liberadas para você!</span>
         
         <a href="https://www.instagram.com/lucasdahondaoficial/" target="_blank" class="btn-insta">
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M224.1 141c-63.6 0-114.9 51.3-114.9 114.9s51.3 114.9 114.9 114.9S339 319.5 339 255.9 287.7 141 224.1 141zm0 189.6c-41.1 0-74.7-33.5-74.7-74.7s33.5-74.7 74.7-74.7 74.7 33.5 74.7 74.7-33.6 74.7-74.7 74.7zm146.4-194.3c0 14.9-12 26.8-26.8 26.8-14.9 0-26.8-12-26.8-26.8s12-26.8 26.8-26.8 26.8 12 26.8 26.8zm76.1 27.2c-1.7-35.9-9.9-67.7-36.2-93.9-26.2-26.2-58-34.4-93.9-36.2-37-2.1-147.9-2.1-184.9 0-35.8 1.7-67.6 9.9-93.9 36.1s-34.4 58-36.2 93.9c-2.1 37-2.1 147.9 0 184.9 1.7 35.9 9.9 67.7 36.2 93.9s58 34.4 93.9 36.2c37 2.1 147.9 2.1 184.9 0 35.9-1.7 67.7-9.9 93.9-36.2 26.2-26.2 34.4-58 36.2-93.9 2.1-37 2.1-147.8 0-184.8zM398.8 388c-7.8 19.6-22.9 34.7-42.6 42.6-29.5 11.7-99.5 9-132.1 9s-102.7 2.6-132.1-9c-19.6-7.8-34.7-22.9-42.6-42.6-11.7-29.5-9-99.5-9-132.1s-2.6-102.7 9-132.1c7.8-19.6 22.9-34.7 42.6-42.6 29.5-11.7 99.5-9 132.1-9s102.7-2.6 132.1 9c19.6 7.8 34.7 22.9 42.6 42.6 11.7 29.5 9 99.5 9 132.1s2.7 102.7-9 132.1z"/></svg>
@@ -380,16 +402,16 @@
 </a>
 
 <script>
-// CONFIGURAÇÃO DO TEMA - CARNAVAL
+// CONFIGURAÇÃO DO TEMA - CPF APROVADO
 const CONFIG_TEMA = {
-    nomeCampanha: "CARNAVAL PREMIADO",
-    tituloSite: "Bloco das Ofertas Revemar",
-    logoURL: "https://image2url.com/r2/bucket2/images/1767636595479-3f4280da-bfe1-4fc5-8128-1ca92c4073c6.png",
+    nomeCampanha: "PROMOÇÃO EXCLUSIVA",
+    tituloSite: "CATÁLOGO CPF APROVADO",
+    logoURL: "https://image2url.com/r2/bucket2/images/1767636595479-3f4280da-bfe1-4fc5-8128-1ca92c4073c6.png", // Mantido conforme original
     
-    // --- CONFIGURAÇÃO DA SEGUNDA IMAGEM (ENFEITE) ---
-    enfeiteIcone: "https://image2url.com/r2/default/images/1770832038261-688a8a70-b02c-4a1c-be94-249624145089.png", 
-    larguraEnfeite: "200px", // Altere aqui para aumentar ou diminuir a largura
-    alturaEnfeite: "300px",   // "auto" mantém a proporção, ou coloque ex: "100px"
+    // Deixei o enfeite original, mas agora ele tem animação flutuante sutil em vez de balanço de carnaval
+    enfeiteIcone: "https://image2url.com/r2/default/images/1772572693263-8f07cbb3-a571-44e4-8412-081a82ed80d9.blob", 
+    larguraEnfeite: "200px", 
+    alturaEnfeite: "300px",   
     
     anoVigente: "2026"
 };
@@ -573,7 +595,7 @@ function renderCards() {
         card.className = 'moto-card';
         card.innerHTML = `
             <div class="moto-stage" onclick="executarAnimacao(this, ${index})" data-current-img="0">
-                <div class="placa-ano">FOLIA ${CONFIG_TEMA.anoVigente}</div>
+                <div class="placa-ano">CPF APROVADO</div>
                 <img src="${CONFIG_TEMA.enfeiteIcone}" class="decoracao-pendurada">
                 <div class="burnout-smoke"></div>
                 <div class="pneu-mark"></div>
@@ -629,50 +651,48 @@ function executarAnimacao(stage, motoIndex) {
     }, 2800);
 }
 
-// CANVAS CONFETES (NOVA LÓGICA)
+// CANVAS TECH PARTICLES (SUBSTITUI O CONFETE)
 const canvas = document.getElementById('bg-canvas');
 const ctx = canvas.getContext('2d');
 let particles = [];
-const carnavalColors = ['#ff007f', '#ffd700', '#00fa9a', '#00bfff', '#fff']; // Cores festivas
+const techColors = ['#0033a0', '#00e5ff', '#ffcc00', '#ffffff']; // Cores do novo tema
 
 function resize() { canvas.width = window.innerWidth; canvas.height = window.innerHeight; }
 window.addEventListener('resize', resize);
 resize();
 
-class Confetti {
+class TechParticle {
     constructor() { this.reset(true); }
     
     reset(initial = false) {
         this.x = Math.random() * canvas.width;
-        this.y = initial ? Math.random() * canvas.height : -10;
-        this.vx = Math.random() * 2 - 1; // Balanço lateral
-        this.vy = Math.random() * 2 + 1; // Velocidade de queda
-        this.size = Math.random() * 6 + 4;
-        this.color = carnavalColors[Math.floor(Math.random() * carnavalColors.length)];
-        this.rotation = Math.random() * 360;
-        this.rotationSpeed = Math.random() * 10 - 5;
+        this.y = initial ? Math.random() * canvas.height : canvas.height + 10;
+        this.vx = (Math.random() - 0.5) * 1; 
+        this.vy = -(Math.random() * 1.5 + 0.5); // Sobem lentamente
+        this.size = Math.random() * 4 + 1;
+        this.color = techColors[Math.floor(Math.random() * techColors.length)];
+        this.alpha = Math.random() * 0.5 + 0.3;
     }
 
     update() {
         this.y += this.vy;
-        this.x += Math.sin(this.y * 0.02) + this.vx; // Efeito de ziguezague
-        this.rotation += this.rotationSpeed;
+        this.x += this.vx;
 
-        if (this.y > canvas.height) this.reset();
+        if (this.y < -10) this.reset();
     }
 
     draw() {
         ctx.save();
-        ctx.translate(this.x, this.y);
-        ctx.rotate(this.rotation * Math.PI / 180);
+        ctx.globalAlpha = this.alpha;
+        ctx.beginPath();
+        ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
         ctx.fillStyle = this.color;
-        // Desenha um quadradinho (papel picado)
-        ctx.fillRect(-this.size / 2, -this.size / 2, this.size, this.size);
+        ctx.fill();
         ctx.restore();
     }
 }
 
-for(let i=0; i<70; i++) particles.push(new Confetti()); // Mais partículas para carnaval
+for(let i=0; i<80; i++) particles.push(new TechParticle()); 
 
 function animateBG() {
     ctx.clearRect(0, 0, canvas.width, canvas.height);
