@@ -287,7 +287,7 @@ const motos = [
   { id:'NC750X', nome:'NC 750X', img1:'https://www.honda.com.br/motos/sites/hda/files/2025-10/3_4FD-v.webp', img2:'https://www.honda.com.br/motos/sites/hda/files/2025-10/2025-NC750X_Location_Details_0167_L.webp', img3:'https://www.honda.com.br/motos/sites/hda/files/2025-10/3_4TD-v.webp' },
   { id:'CB1000R70', nome:'CB 1000R 70%', img1:'https://www.honda.com.br/motos/sites/hda/files/2023-09/moto-honda-cb-1000r-preto-fosco-mat-ballistic-black-metallic-lateral-direito.webp', img2:'https://www.honda.com.br/motos/sites/hda/files/2023-09/11_4.webp', img3:'https://www.honda.com.br/motos/sites/hda/files/2023-09/7_0.webp' },
   { id:'CRF1100L', nome:'CRF 1100L AFRICA TWIN 70%', img1:'https://www.honda.com.br/motos/sites/hda/files/2025-12/Honda-CRF1100-vista%20lateral.webp', img2:'https://www.honda.com.br/motos/sites/hda/files/2025-12/Painel-da-Africa-Twin-em-destaque.webp', img3:'https://www.honda.com.br/motos/sites/hda/files/2025-12/Led-e-guid%C3%A3o-moto-Honda-Africa-Twin-em-destaque.webp' }
-
+];
 const params = new URLSearchParams(window.location.search);
 const motoId = params.get("moto");
 const motoSelecionada = motos.find(m => m.id === motoId) || motos[0];
