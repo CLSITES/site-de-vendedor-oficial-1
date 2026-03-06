@@ -309,7 +309,16 @@ document.getElementById("finForm").addEventListener("submit", function(e){
     e.preventDefault();
     const fd = new FormData(this);
     const data = Object.fromEntries(fd.entries());
-    const msg = `*SIMULAÇÃO FINANCIAMENTO*\n*Moto:* ${data.moto}\n*Nome:* ${data.nome}\n*CPF:* ${data.cpf}\n*Nascimento:* ${data.nascimento}\n*Renda:* R$ ${data.renda}\n*Entrada:* R$ ${data.entrada || "0"}`;
+    const msg = `*INFORMAÇÕES NECESSÁRIAS PARA PRÉ-ANÁLISE*
+*Moto:* ${data.moto}
+*Nome:* ${data.nome}
+*CPF:* ${data.cpf}
+*Nascimento:* ${data.nascimento}
+*Celular:* ${data.whatsapp}
+*Renda:* R$ ${data.renda}
+*Tipo:* ${data.tipo}
+*Habilitação:* ${data.habilitacao}
+*Entrada:* R$ ${data.entrada || "0"}`;
     window.location.href = `https://wa.me/5594992781498?text=${encodeURIComponent(msg)}`;
 });
 </script>
