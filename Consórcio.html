@@ -271,8 +271,7 @@ Object.entries(moto.parcelas).forEach(([p,v])=>{
 document.getElementById('consForm').addEventListener('submit', e => {
     e.preventDefault();
     const d = Object.fromEntries(new FormData(e.target));
-    // Mensagem focada na aprovação do CPF (tema da campanha)
-    const msg = `🔥 *QUERO APROVAR MEU CPF - REVEMAR*\n\nOlá! Vi a promoção *Fácil de Aprovar* e quero simular:\n\n🏍 *Moto:* ${d.moto}\n👤 *Cliente:* ${d.nome}\n🆔 *CPF:* ${d.cpf}\n📊 *Plano:* ${d.plano}x\n💰 *Parcela Ideal:* R$ ${d.parcelaIdeal}\n🚀 *Urgência:* ${d.pressa}`;
+    const msg = `*SIMULAÇÃO CONSÓRCIO REVEMAR*\n\n*Moto:* ${d.moto}\n*Nome:* ${d.nome}\n*CPF:* ${d.cpf}\n*Plano:* ${d.parcelaIdeal}\n*Tem pressa:* ${d.pressa}`;
     location.href = `https://wa.me/5594992781498?text=${encodeURIComponent(msg)}`;
 });
 </script>
