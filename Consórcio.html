@@ -3,25 +3,24 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Promoção Revemar - Fácil de Aprovar</title>
+<title>Consórcio Honda - Revemar</title>
 
 <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800&display=swap" rel="stylesheet">
 
 <style>
-    /* --- CONFIGURAÇÕES TEMA: FÁCIL DE APROVAR, FÁCIL DE LEVAR --- */
+    /* --- CONFIGURAÇÕES GERAIS (ESTILO IGUAL AO PRIMEIRO) --- */
     :root {
-        --honda-red: #e30613;
-        --promo-yellow: #ffcc00;
-        --promo-gold: #ffaa00;
-        --dark-bg: #1a0000;
-        --whatsapp-green: #25d366;
-    }
+    --honda-blue: #ffb000; /* amarelo principal */
+    --honda-dark: #3b2a00; /* fundo escuro quente */
+    --gold: #ffd700; /* dourado */
+    --red: #ff1a1a; /* vermelho destaque */
+    --whatsapp-green: #25d366;
+}
 
     body {
         margin: 0;
         font-family: 'Montserrat', sans-serif;
-        /* Fundo gradiente inspirado no panfleto da campanha */
-        background: radial-gradient(circle at top, #ff4d4d 0%, #800000 50%, var(--dark-bg) 100%);
+        background: linear-gradient(135deg, var(--honda-dark) 0%, var(--honda-blue) 100%);
         min-height: 100vh;
         padding: 20px;
         color: #333;
@@ -37,12 +36,12 @@
         z-index: 1;
     }
 
-    /* --- LOGO DA CAMPANHA --- */
+    /* --- LOGO --- */
     .logo-top {
         display: block;
         margin: 0 auto 20px auto;
-        width: clamp(200px, 60vw, 320px);
-        filter: drop-shadow(0 10px 20px rgba(0,0,0,0.5));
+        width: clamp(120px, 35vw, 180px);
+        filter: drop-shadow(0 5px 15px rgba(0,0,0,0.6));
     }
 
     /* --- ESTILO DOS CARDS --- */
@@ -51,47 +50,43 @@
         backdrop-filter: blur(10px);
         padding: clamp(20px, 5vw, 30px);
         border-radius: 24px;
-        box-shadow: 0 20px 50px rgba(0,0,0,0.6);
+        box-shadow: 0 20px 50px rgba(0,0,0,0.4);
         margin-bottom: 25px;
         position: relative;
-        border: 2px solid var(--promo-yellow);
+        border: 1px solid rgba(255, 255, 255, 0.3);
     }
 
-    /* Faixa superior temática */
     .card::after {
         content: "";
         position: absolute;
         top: 0; left: 0; right: 0;
-        height: 8px;
-        background: linear-gradient(90deg, var(--promo-yellow), var(--honda-red), var(--promo-yellow));
+        height: 6px;
+        background: linear-gradient(90deg, #ffd700, #ffb000, #ff1a1a);
         border-radius: 20px 20px 0 0;
     }
 
     h2 {
         margin: 10px 0 20px;
-        font-size: clamp(1.2rem, 5vw, 1.5rem);
+        font-size: clamp(1.2rem, 5vw, 1.6rem);
         text-align: center;
         text-transform: uppercase;
-        /* Texto em gradiente vermelho/escuro */
-        background: linear-gradient(180deg, var(--honda-red), #800000);
+        background: linear-gradient(45deg, #ff1a1a, #ffb000);
         -webkit-background-clip: text;
         -webkit-text-fill-color: transparent;
         font-weight: 800;
-        letter-spacing: -0.5px;
     }
 
     .moto-name {
         font-weight: 800;
         font-size: clamp(1rem, 4vw, 1.3rem);
         margin-bottom: 25px;
-        color: #fff;
+        color: white;
         text-align: center;
-        background: linear-gradient(90deg, #cc0000, var(--honda-red));
+        background: linear-gradient(90deg, #ff1a1a, #ff6a00);
         padding: 12px 20px;
         border-radius: 50px;
-        box-shadow: 0 4px 15px rgba(227, 6, 19, 0.4);
+        box-shadow: 0 4px 15px rgba(0, 85, 255, 0.3);
         text-transform: uppercase;
-        border: 1px solid var(--promo-yellow);
     }
 
     /* --- FORMULÁRIO --- */
@@ -100,7 +95,7 @@
         margin-top: 15px;
         display: block;
         font-size: 13px;
-        color: #500;
+        color: #002266;
         text-transform: uppercase;
     }
 
@@ -108,49 +103,40 @@
         width: 100%;
         padding: 14px;
         border-radius: 12px;
-        border: 2px solid #f0e0e0;
+        border: 2px solid #e0e6ed;
         margin-top: 6px;
         font-size: 16px;
-        background: #fff;
+        background: #f8fafc;
         font-family: 'Montserrat', sans-serif;
         box-sizing: border-box;
-        transition: 0.3s;
     }
 
-    input:focus {
-        border-color: var(--honda-red);
-        outline: none;
-        background: #fffcf0;
-    }
+    /* Bordas laterais coloridas para ficar igual ao outro */
+   input[name="nome"] { border-left: 5px solid #ff1a1a; }
+input[name="cpf"] { border-left: 5px solid #ffd700; }
+select[name="plano"] { border-left: 5px solid #ffb000; }
+    input[name="parcelaIdeal"] { border-left: 5px solid var(--whatsapp-green); }
 
-    /* Bordas laterais seguindo o novo tema */
-    input[name="nome"] { border-left: 6px solid var(--honda-red); }
-    input[name="cpf"] { border-left: 6px solid var(--promo-yellow); }
-    select[name="plano"] { border-left: 6px solid var(--honda-red); }
-    input[name="parcelaIdeal"] { border-left: 6px solid var(--promo-yellow); }
-
-    /* Botão WhatsApp - Grande e Chamativo */
     button {
         width: 100%;
-        padding: 20px;
-        background: linear-gradient(45deg, #1bd741, #25d366, #1bd741);
+        padding: 18px;
+        background: linear-gradient(45deg, #128c7e, var(--whatsapp-green), #128c7e);
         background-size: 200% auto;
         border: none;
         margin-top: 25px;
         border-radius: 50px;
-        font-size: 18px;
-        font-weight: 900;
+        font-size: 16px;
+        font-weight: 800;
         color: white;
         cursor: pointer;
         text-transform: uppercase;
-        box-shadow: 0 10px 25px rgba(37, 211, 102, 0.5);
-        animation: pulse 2s infinite;
+        box-shadow: 0 10px 20px rgba(37, 211, 102, 0.3);
+        animation: gradientMove 3s infinite alternate;
     }
 
-    @keyframes pulse {
-        0% { transform: scale(1); }
-        50% { transform: scale(1.03); }
-        100% { transform: scale(1); }
+    @keyframes gradientMove {
+        0% { background-position: 0% 50%; }
+        100% { background-position: 100% 50%; }
     }
 
     /* --- CARROSSEL --- */
@@ -159,8 +145,7 @@
         height: 240px;
         overflow: hidden;
         border-radius: 16px;
-        background: #fff;
-        border: 1px solid #eee;
+        background: white;
     }
 
     .carousel-track {
@@ -181,65 +166,48 @@
         0%   { transform: translateX(0); }
         100% { transform: translateX(-50%); }
     }
-
-    /* Badge de "Revemar Motocenter" no rodapé */
-    .footer-brand {
-        text-align: center;
-        color: white;
-        margin-top: 10px;
-        font-size: 12px;
-        font-weight: 600;
-        opacity: 0.8;
-    }
 </style>
 </head>
 <body>
 
 <div class="main-wrapper">
-    <img src="https://www.image2url.com/r2/default/images/1776105740628-4fed2248-a3cd-4d4a-b028-56829cbbf3e4.blob" alt="Promoção Fácil de Aprovar" class="logo-top">
+    <img src="https://www.image2url.com/r2/default/images/1776183373218-60bf6edc-ef12-48d9-8701-49a41878912c.blob" alt="Logo" class="logo-top">
 
     <div class="card">
-        <h2 id="tituloMoto">Escolha sua Honda</h2>
+        <h2 id="tituloMoto">Carregando Modelo...</h2>
         <div class="carousel">
             <div class="carousel-track" id="carouselTrack"></div>
         </div>
     </div>
 
     <div class="card">
-        <h2>Simulação Imediata</h2>
+        <h2>Simulação de Consórcio</h2>
         <p class="moto-name" id="motoEscolhida"></p>
 
         <form id="consForm">
             <label>Nome completo *</label>
-            <input name="nome" placeholder="Seu nome" required>
+            <input name="nome" placeholder="Digite seu nome completo" required>
 
             <label>CPF *</label>
-            <input name="cpf" placeholder="000.000.000-00" id="cpfInput" required>
+            <input name="cpf" placeholder="000.000.000-00" required>
 
-            <label>Plano sugerido *</label>
+            <label>Plano de parcelas *</label>
             <select name="plano" id="planoSelect" required></select>
 
-            <label>Pressa para pegar a moto? *</label>
+            <label>Tem pressa para contemplar? *</label>
             <select name="pressa" required>
-                <option value="">Selecione...</option>
-                <option>Quero o quanto antes!</option>
-                <option>Posso aguardar</option>
+                <option value="">Selecione uma opção</option>
+                <option>Sim, tenho pressa</option>
+                <option>Não, posso aguardar</option>
             </select>
 
-            
-
             <input type="hidden" name="moto" id="motoInput">
-            <button type="submit">✅ ENCAMINHAR</button>
+            <button type="submit">📲 Enviar para WhatsApp</button>
         </form>
-    </div>
-    
-    <div class="footer-brand">
-        REVEMAR MOTOCENTER - APAIXONADOS POR MOTOS
     </div>
 </div>
 
 <script>
-// Mantive sua lista de motos e a lógica original, apenas ajustei a mensagem do WhatsApp
 const motos = [
     {
   id:'BIZ125ES',
@@ -524,15 +492,25 @@ track.innerHTML = [...moto.imgs, ...moto.imgs].map(img => `<img src="${img}">`).
 const planoSelect = document.getElementById('planoSelect');
 Object.entries(moto.parcelas).forEach(([p,v])=>{
     const opt=document.createElement('option');
-    opt.value=p;
-    opt.textContent=`${p} meses de R$ ${v.toFixed(2)}`;
+    opt.value = `${p}|${v.toFixed(2)}`;
+opt.textContent = `${p}x de R$ ${v.toFixed(2)}`;
     planoSelect.appendChild(opt);
 });
 
 document.getElementById('consForm').addEventListener('submit', e => {
     e.preventDefault();
     const d = Object.fromEntries(new FormData(e.target));
-    const msg = `*SIMULAÇÃO CONSÓRCIO REVEMAR*\n\n*Moto:* ${d.moto}\n*Nome:* ${d.nome}\n*CPF:* ${d.cpf}\n*Plano:* ${d.plano}x\n*Tem pressa:* ${d.pressa}`;
+
+    const [meses, valor] = d.plano.split("|");
+
+    const msg = `*SIMULAÇÃO CONSÓRCIO REVEMAR*
+
+*Moto:* ${d.moto}
+*Nome:* ${d.nome}
+*CPF:* ${d.cpf}
+*Plano escolhido:* ${meses}x de R$ ${valor}
+*Tem pressa:* ${d.pressa}`;
+
     location.href = `https://wa.me/5594992781498?text=${encodeURIComponent(msg)}`;
 });
 </script>
