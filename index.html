@@ -9,22 +9,22 @@
         /* =========================================
            1. MÓDULO DE CORES DO TEMA (ALTERE AQUI)
            ========================================= */
-        :root {
-            --theme-primary: #e60000; /* Vermelho principal */
-            --theme-dark: #4a0000;    /* Vermelho escuro/Vinho */
-            --theme-glow: #ffaa00;    /* Laranja para luzes/brilho */
-            --theme-accent: #ffcc00;  /* Amarelo dourado para destaques */
-            --card-white: #ffffff;
-            --bg-dark: #1b0000;       /* Fundo da página */
-        }
+       :root {
+    --theme-primary: #e30613; /* vermelho Honda */
+    --theme-dark: #000000;    /* preto */
+    --theme-glow: #ffcc00;    /* amarelo */
+    --theme-accent: #ffd700;  /* amarelo destaque */
+    --card-white: #ffffff;
+    --bg-dark: #ffffff;       /* fundo branco */
+}
 
         * { box-sizing: border-box; -webkit-font-smoothing: antialiased; }
 
         body {
             margin: 0;
             font-family: 'Montserrat', sans-serif;
-            background: linear-gradient(135deg, var(--bg-dark) 0%, var(--theme-dark) 100%);
-            color: #fff;
+            background: #000000;
+color: #000;
             overflow-x: hidden;
         }
 
@@ -34,11 +34,11 @@
             top: 0; left: 0;
             width: 100%; height: 100%;
             z-index: -1;
-            opacity: 0.6;
+            opacity: 0.9;
         }
 
         header {
-            background: rgba(10, 0, 0, 0.95);
+            background: linear-gradient(to top, #4c0000 5%, #000000 85%);
             padding: 15px 5%;
             display: flex;
             justify-content: space-between;
@@ -151,7 +151,7 @@
             margin: 40px 0 60px 0;
             text-transform: uppercase;
             letter-spacing: -1px;
-            background: linear-gradient(to right, #fff, var(--theme-accent), #fff);
+            background: linear-gradient(to right, var(--theme-primary), var(--theme-accent));
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             border-bottom: 2px dashed var(--theme-glow);
@@ -216,11 +216,11 @@
 
         .decoracao-pendurada {
             position: absolute;
-            top: 0; right: 20px;
+            top: 0; right: 6px;
             width: 120px;
             animation: floating 4s ease-in-out infinite;
-            z-index: 5;
-            filter: drop-shadow(2px 5px 5px rgba(0,0,0,0.2));
+            z-index: 0;
+            filter: drop-shadow(1px 9px 1px rgba(0,0,0,0.2));
         }
 
         @keyframes floating {
@@ -229,7 +229,7 @@
         }
 
         .moto-img {
-            width: 85%;
+            width: 80%;
             z-index: 3;
             filter: drop-shadow(0 15px 15px rgba(0,0,0,0.1));
             transition: opacity 0.2s;
@@ -338,7 +338,7 @@
     <div class="vendedor-info">
         <span class="cargo">Consultor de Vendas</span>
         <span class="nome-vendedor">Lucas Honda</span>
-        <span style="font-size: 0.8rem; color: #aaa;">Condições exclusivas liberadas para você!</span>
+        <span style="font-size: 0.9rem; color:#ffffff;">Condições exclusivas liberadas para você!</span>
         
         <a href="https://www.instagram.com/lucasdahondaoficial/" target="_blank" class="btn-insta">
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M224.1 141c-63.6 0-114.9 51.3-114.9 114.9s51.3 114.9 114.9 114.9S339 319.5 339 255.9 287.7 141 224.1 141zm0 189.6c-41.1 0-74.7-33.5-74.7-74.7s33.5-74.7 74.7-74.7 74.7 33.5 74.7 74.7-33.6 74.7-74.7 74.7zm146.4-194.3c0 14.9-12 26.8-26.8 26.8-14.9 0-26.8-12-26.8-26.8s12-26.8 26.8-26.8 26.8 12 26.8 26.8zm76.1 27.2c-1.7-35.9-9.9-67.7-36.2-93.9-26.2-26.2-58-34.4-93.9-36.2-37-2.1-147.9-2.1-184.9 0-35.8 1.7-67.6 9.9-93.9 36.1s-34.4 58-36.2 93.9c-2.1 37-2.1 147.9 0 184.9 1.7 35.9 9.9 67.7 36.2 93.9s58 34.4 93.9 36.2c37 2.1 147.9 2.1 184.9 0 35.9-1.7 67.7-9.9 93.9-36.2 26.2-26.2 34.4-58 36.2-93.9 2.1-37 2.1-147.8 0-184.8zM398.8 388c-7.8 19.6-22.9 34.7-42.6 42.6-29.5 11.7-99.5 9-132.1 9s-102.7 2.6-132.1-9c-19.6-7.8-34.7-22.9-42.6-42.6-11.7-29.5-9-99.5-9-132.1s-2.6-102.7 9-132.1c7.8-19.6 22.9-34.7 42.6-42.6 29.5-11.7 99.5-9 132.1-9s102.7-2.6 132.1 9c19.6 7.8 34.7 22.9 42.6 42.6 11.7 29.5 9 99.5 9 132.1s2.7 102.7-9 132.1z"/></svg>
@@ -372,14 +372,14 @@
    2. MÓDULO DE TEXTOS E IMAGENS (ALTERE AQUI)
    ========================================= */
 const CONFIG_TEMA = {
-    nomeCampanha: "FÁCIL DE APROVAR, FÁCIL DE LEVAR",
+    nomeCampanha: "LEVA TUDO REVEMAR",
     tituloSite: "CONDIÇÕES IMPERDÍVEIS",
-    tagMiniatura: "FÁCIL DE LEVAR", /* Substituiu o 'CPF APROVADO' nos cards */
+    tagMiniatura: "LEVA TUDO", /* Substituiu o 'CPF APROVADO' nos cards */
     
     /* COLOQUE AQUI A URL DAQUELA IMAGEM DA LOGO NOVA QUE VOCÊ ME MANDOU! */
     logoURL: "https://image2url.com/r2/bucket2/images/1767636595479-3f4280da-bfe1-4fc5-8128-1ca92c4073c6.png", 
     
-    enfeiteIcone: "https://www.image2url.com/r2/default/images/1776105740628-4fed2248-a3cd-4d4a-b028-56829cbbf3e4.blob", 
+    enfeiteIcone: "https://www.image2url.com/r2/default/images/1779460228857-6f701fed-c991-4913-beca-427e25886962.png", 
     anoVigente: "2026"
 };
 
@@ -624,7 +624,7 @@ function executarAnimacao(stage, motoIndex) {
 const canvas = document.getElementById('bg-canvas');
 const ctx = canvas.getContext('2d');
 let particles = [];
-const techColors = ['#e60000', '#ffcc00', '#ffaa00', '#ffffff']; // Cores do novo tema
+const techColors = ['#e30613','#ffcc00','#000000','#999999']; // Cores do novo tema
 
 function resize() { canvas.width = window.innerWidth; canvas.height = window.innerHeight; }
 window.addEventListener('resize', resize);
