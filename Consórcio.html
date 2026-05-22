@@ -8,14 +8,15 @@
 <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800&display=swap" rel="stylesheet">
 
 <style>
-    /* --- CONFIGURAÇÕES GERAIS (ESTILO IGUAL AO PRIMEIRO) --- */
+    /* --- CONFIGURAÇÕES GERAIS --- */
     :root {
-    --honda-blue: #ffb000; /* amarelo principal */
-    --honda-dark: #3b2a00; /* fundo escuro quente */
-    --gold: #ffd700; /* dourado */
+    --honda-blue: #ffffff; /* agora vira amarelo principal */
+    --honda-dark: #fffffF /* fundo mais quente (amarelo escuro) */
+    --gold: #ffd700; /* dourado forte */
     --red: #ff1a1a; /* vermelho destaque */
     --whatsapp-green: #25d366;
 }
+
 
     body {
         margin: 0;
@@ -171,7 +172,7 @@ select[name="plano"] { border-left: 5px solid #ffb000; }
 <body>
 
 <div class="main-wrapper">
-    <img src="https://www.image2url.com/r2/default/images/1776183373218-60bf6edc-ef12-48d9-8701-49a41878912c.blob" alt="Logo" class="logo-top">
+    <img src="https://www.image2url.com/r2/default/images/1779460228857-6f701fed-c991-4913-beca-427e25886962.png" alt="Logo" class="logo-top">
 
     <div class="card">
         <h2 id="tituloMoto">Carregando Modelo...</h2>
@@ -189,7 +190,8 @@ select[name="plano"] { border-left: 5px solid #ffb000; }
             <input name="nome" placeholder="Digite seu nome completo" required>
 
             <label>CPF *</label>
-            <input name="cpf" placeholder="000.000.000-00" required>
+            <input name="cpf" id="cpfInput" placeholder="000.000.000-00" maxlength="14" required>
+<small id="cpfErro" style="color:red; display:none;">CPF inválido</small>
 
             <label>Plano de parcelas *</label>
             <select name="plano" id="planoSelect" required></select>
@@ -499,6 +501,7 @@ opt.textContent = `${p}x de R$ ${v.toFixed(2)}`;
 
 document.getElementById('consForm').addEventListener('submit', e => {
     e.preventDefault();
+  
     const d = Object.fromEntries(new FormData(e.target));
 
     const [meses, valor] = d.plano.split("|");
@@ -513,6 +516,60 @@ document.getElementById('consForm').addEventListener('submit', e => {
 
     location.href = `https://wa.me/5594992781498?text=${encodeURIComponent(msg)}`;
 });
+
+  const cpfInput = document.getElementById("cpfInput");
+const cpfErro = document.getElementById("cpfErro");
+
+// FORMATA + VALIDA
+cpfInput.addEventListener("input", function(e){
+    let v = e.target.value.replace(/\D/g,"");
+
+    if(v.length > 3) v = v.replace(/(\d{3})(\d)/,"$1.$2");
+    if(v.length > 7) v = v.replace(/(\d{3})\.(\d{3})(\d)/,"$1.$2.$3");
+    if(v.length > 11) v = v.replace(/(\d{3})\.(\d{3})\.(\d{3})(\d)/,"$1.$2.$3-$4");
+
+    e.target.value = v;
+
+    const cpfLimpo = v.replace(/\D/g, "");
+
+    if (cpfLimpo.length === 11) {
+        if (!validarCPF(cpfLimpo)) {
+            cpfErro.style.display = "block";
+            cpfInput.style.borderColor = "red";
+        } else {
+            cpfErro.style.display = "none";
+            cpfInput.style.borderColor = "green";
+        }
+    } else {
+        cpfErro.style.display = "none";
+        cpfInput.style.borderColor = "#e0e6ed";
+    }
+});
+
+
+// FUNÇÃO VALIDAR CPF
+function validarCPF(cpf) {
+    if (cpf.length != 11 || /^(\d)\1+$/.test(cpf)) return false;
+
+    let soma = 0, resto;
+
+    for (let i = 1; i <= 9; i++)
+        soma += parseInt(cpf.substring(i-1, i)) * (11 - i);
+
+    resto = (soma * 10) % 11;
+    if (resto >= 10) resto = 0;
+    if (resto != parseInt(cpf.substring(9, 10))) return false;
+
+    soma = 0;
+    for (let i = 1; i <= 10; i++)
+        soma += parseInt(cpf.substring(i-1, i)) * (12 - i);
+
+    resto = (soma * 10) % 11;
+    if (resto >= 10) resto = 0;
+    if (resto != parseInt(cpf.substring(10, 11))) return false;
+
+    return true;
+}
 </script>
 
 </body>
