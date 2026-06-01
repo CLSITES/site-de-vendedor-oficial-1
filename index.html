@@ -10,8 +10,8 @@
            1. MÓDULO DE CORES DO TEMA (ALTERE AQUI)
            ========================================= */
        :root {
-    --theme-primary: #e30613; /* vermelho Honda */
-    --theme-dark: #000000;    /* preto */
+    --theme-primary: #009C3B; /* vermelho Honda */
+    --theme-dark: #002776;    /* preto */
     --theme-glow: #ffcc00;    /* amarelo */
     --theme-accent: #ffd700;  /* amarelo destaque */
     --card-white: #ffffff;
@@ -23,7 +23,7 @@
         body {
             margin: 0;
             font-family: 'Montserrat', sans-serif;
-            background: #000000;
+            background: #002b15;
 color: #000;
             overflow-x: hidden;
         }
@@ -38,7 +38,7 @@ color: #000;
         }
 
         header {
-            background: linear-gradient(to top, #4c0000 5%, #000000 85%);
+            background: linear-gradient(to top, #009C3B 5%, #000000 150%);
             padding: 15px 5%;
             display: flex;
             justify-content: space-between;
@@ -217,7 +217,7 @@ color: #000;
         .decoracao-pendurada {
             position: absolute;
             top: 0; right: 6px;
-            width: 120px;
+            width: 160px;
             animation: floating 4s ease-in-out infinite;
             z-index: 0;
             filter: drop-shadow(1px 9px 1px rgba(0,0,0,0.2));
@@ -372,20 +372,20 @@ color: #000;
    2. MÓDULO DE TEXTOS E IMAGENS (ALTERE AQUI)
    ========================================= */
 const CONFIG_TEMA = {
-    nomeCampanha: "LEVA TUDO REVEMAR",
+    nomeCampanha: "CRAQUE DAS OFERTAS",
     tituloSite: "CONDIÇÕES IMPERDÍVEIS",
-    tagMiniatura: "LEVA TUDO", /* Substituiu o 'CPF APROVADO' nos cards */
+    tagMiniatura: "COPA REVEMAR", /* Substituiu o 'CPF APROVADO' nos cards */
     
     /* COLOQUE AQUI A URL DAQUELA IMAGEM DA LOGO NOVA QUE VOCÊ ME MANDOU! */
     logoURL: "https://image2url.com/r2/bucket2/images/1767636595479-3f4280da-bfe1-4fc5-8128-1ca92c4073c6.png", 
     
-    enfeiteIcone: "https://www.image2url.com/r2/default/images/1779460228857-6f701fed-c991-4913-beca-427e25886962.png", 
+    enfeiteIcone: "https://www.image2url.com/r2/default/images/1780318605532-0c5e2b58-86c8-401e-b9b4-eb590e2bca65.png", 
     anoVigente: "2026"
 };
 
 const MOTOS = [
 {
-  id:'POP110', nome:'POP 110i ES', ano:2026, precoAvista:'R$ 17.502',
+  id:'POP110', nome:'POP 110i ES', ano:2026, precoAvista:'R$ 17.486',
   imgs:[
     'https://www.image2url.com/r2/default/images/1778166206972-b4fae2ec-de1a-480d-af24-3e167bd96a35.png',
     'https://www.image2url.com/r2/default/images/1778166248475-fbec0bc9-a271-4777-aaaa-ac87d0ef7bf5.png',
@@ -393,7 +393,7 @@ const MOTOS = [
   ]
 },
 {
-  id:'BIZ125ES', nome:'BIZ 125 ES', ano:2026, precoAvista:'R$ 20.794',
+  id:'BIZ125ES', nome:'BIZ 125 ES', ano:2026, precoAvista:'R$ 21.145',
   imgs:[
     'https://www.honda.com.br/motos/sites/hda/files/2025-08/Imagem-Home-Honda-Biz-125-ES-Preto-Black_0.webp',
     'https://d1qa0ax3fv1ims.cloudfront.net/catalogo_imagens/duas_rodas/biz-125-es-vermelho-maceio-red-lado-a-555-x-372.png',
@@ -401,7 +401,7 @@ const MOTOS = [
   ]
 },
 {
-  id:'BIZ125EX', nome:'BIZ 125 EX', ano:2026, precoAvista:'R$ 25.203',
+  id:'BIZ125EX', nome:'BIZ 125 EX', ano:2026, precoAvista:'R$ 25.642',
   imgs:[
     'https://www.honda.com.br/motos/sites/hda/files/2025-08/Imagem-Home-Biz-125-EX-Branco-Perolizado-Pearl-Hakuji-White_0.webp',
     'https://d1qa0ax3fv1ims.cloudfront.net/catalogo_imagens/duas_rodas/biz-125-ex-azul-b-555-x372_0.png',
@@ -409,7 +409,7 @@ const MOTOS = [
   ]
 },
 {
-  id:'ELITE125', nome:'Elite 125', ano:2026, precoAvista:'R$ 19.826',
+  id:'ELITE125', nome:'Elite 125', ano:2026, precoAvista:'R$ 19.815',
   imgs:[
     'https://www.honda.com.br/motos/sites/hda/files/2025-08/Imagem-Home-Elite-125-Vermelho-Maceio-Red_0.webp',
     'https://d1qa0ax3fv1ims.cloudfront.net/catalogo_imagens/duas_rodas/elite-lateral-3_0.png',
@@ -418,22 +418,22 @@ const MOTOS = [
   ]
 },
 {
-  id:'PCX', nome:'PCX CBS', ano:2026, precoAvista:'R$ 24.731',
+  id:'PCX', nome:'PCX CBS', ano:2026, precoAvista:'R$ 24.707',
   imgs:['https://www.honda.com.br/motos/sites/hda/files/2025-08/imagem-home-honda-pcx-branco_0.webp']
 },
 {
-  id:'PCXABS', nome:'PCX ABS', ano:2026, precoAvista:'R$ 26.935',
+  id:'PCXABS', nome:'PCX ABS', ano:2026, precoAvista:'R$ 26.916',
   imgs:['https://image2url.com/r2/bucket3/images/1767705525933-5a8cc60a-5afb-45ee-bb02-4d1cc2699a64.png']
 },
 {
-  id:'HONADA_ADV', nome:'Honda ADV', ano:2026, precoAvista:'R$ 33.102',
+  id:'HONADA_ADV', nome:'Honda ADV', ano:2026, precoAvista:'R$ 33.073',
   imgs:[
     'https://www.honda.com.br/motos/sites/hda/files/2025-08/Imagem-Home-Honda-ADV-Prata-Met%C3%A1lico_0.webp',
     'https://d1qa0ax3fv1ims.cloudfront.net/catalogo_imagens/duas_rodas/honda-adv_-vermelha_lateral-2_0.png'
   ]
 },
 {
-  id:'CG160START', nome:'CG 160 START', ano:2026, precoAvista:'R$ 25.558',
+  id:'CG160START', nome:'CG 160 START', ano:2026, precoAvista:'R$ 25.539',
   imgs:[
     'https://www.honda.com.br/motos/sites/hda/files/2025-08/Imagem-home-visao-da-lateral-direita-da-honda-cg-160-start.webp',
     'https://d1qa0ax3fv1ims.cloudfront.net/catalogo_imagens/duas_rodas/cg-160-start-vermelha-lateral.png',
@@ -441,7 +441,7 @@ const MOTOS = [
   ]
 },
 {
-  id:'CG160FAN', nome:'CG 160 FAN', ano:2026, precoAvista:'R$ 27.684',
+  id:'CG160FAN', nome:'CG 160 FAN', ano:2026, precoAvista:'R$ 27.661',
   imgs:[
     'https://www.honda.com.br/motos/sites/hda/files/2025-08/Imagem-Home-Honda-CG-160-Fan-Vermelho-Perolizado.webp',
     'https://d1qa0ax3fv1ims.cloudfront.net/catalogo_imagens/duas_rodas/preto-metalico-infinite-black-metallic-1.png',
@@ -449,7 +449,7 @@ const MOTOS = [
   ]
 },
 {
-  id:'CG160TITAN', nome:'CG 160 TITAN', ano:2026, precoAvista:'R$ 29.536',
+  id:'CG160TITAN', nome:'CG 160 TITAN', ano:2026, precoAvista:'R$ 29.510',
   imgs:[
     'https://www.honda.com.br/motos/sites/hda/files/2025-08/Imagem-Home-Honda-CG-160-Titan-Cinza-Met%C3%A1lico.webp',
     'https://d1qa0ax3fv1ims.cloudfront.net/catalogo_imagens/duas_rodas/cg-160-titan-vermelha-lateral.png',
