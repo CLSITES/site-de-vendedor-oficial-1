@@ -8,36 +8,34 @@
 <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800&display=swap" rel="stylesheet">
 
 <style>
-    /* --- CONFIGURAÇÕES GERAIS --- */
-    :root {
-    --honda-blue: #ffffff; /* agora vira amarelo principal */
-    --honda-dark: #fffffF /* fundo mais quente (amarelo escuro) */
-    --gold: #ffd700; /* dourado forte */
-    --red: #ff1a1a; /* vermelho destaque */
-    --whatsapp-green: #25d366;
+:root {
+    --verde: #009C3B;
+    --verde-escuro: #006B2A;
+    --amarelo: #00205f;
+    --azul: #002b15;
+    --azul-claro: #3E8EDE;
+    --branco: #ffffff;
 }
 
+/* FUNDO */
+body {
+    margin: 0;
+    font-family: 'Montserrat', sans-serif;
+    background: linear-gradient(135deg, var(--verde) 0%, var(--azul) 1%);
+    min-height: 100vh;
+    padding: 20px;
+    display: flex;
+    justify-content: center;
+}
 
-    body {
-        margin: 0;
-        font-family: 'Montserrat', sans-serif;
-        background: linear-gradient(135deg, var(--honda-dark) 0%, var(--honda-blue) 100%);
-        min-height: 100vh;
-        padding: 20px;
-        color: #333;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-    }
-
+ /* --- CONTAINER PRINCIPAL (LIMITADOR PC) --- */
     .main-wrapper {
         width: 100%;
-        max-width: 600px;
+        max-width: 600px; /* Largura ideal para desktop */
         position: relative;
         z-index: 1;
     }
-
-    /* --- LOGO --- */
+   /* --- LOGO --- */
     .logo-top {
         display: block;
         margin: 0 auto 20px auto;
@@ -90,89 +88,92 @@
         text-transform: uppercase;
     }
 
-    /* --- FORMULÁRIO --- */
-    label {
-        font-weight: 700;
-        margin-top: 15px;
-        display: block;
-        font-size: 13px;
-        color: #002266;
-        text-transform: uppercase;
-    }
+/* LINHA TOPO COLORIDA */
+.card::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 8px;
+    background: linear-gradient(90deg, var(--verde), var(--amarelo), var(--azul));
+    border-radius: 20px 20px 0 0;
+}
 
-    input, select {
-        width: 100%;
-        padding: 14px;
-        border-radius: 12px;
-        border: 2px solid #e0e6ed;
-        margin-top: 6px;
-        font-size: 16px;
-        background: #f8fafc;
-        font-family: 'Montserrat', sans-serif;
-        box-sizing: border-box;
-    }
+/* TITULOS */
+h2 {
+    text-align: center;
+    font-weight: 800;
+    background: linear-gradient(45deg, var(--verde), var(--azul));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
 
-    /* Bordas laterais coloridas para ficar igual ao outro */
-   input[name="nome"] { border-left: 5px solid #ff1a1a; }
-input[name="cpf"] { border-left: 5px solid #ffd700; }
-select[name="plano"] { border-left: 5px solid #ffb000; }
-    input[name="parcelaIdeal"] { border-left: 5px solid var(--whatsapp-green); }
+/* NOME DA MOTO */
+.moto-name {
+    background: linear-gradient(90deg, var(--verde), var(--amarelo));
+    color: #000;
+    padding: 12px;
+    border-radius: 30px;
+    text-align: center;
+    font-weight: 800;
+}
 
-    button {
-        width: 100%;
-        padding: 18px;
-        background: linear-gradient(45deg, #128c7e, var(--whatsapp-green), #128c7e);
-        background-size: 200% auto;
-        border: none;
-        margin-top: 25px;
-        border-radius: 50px;
-        font-size: 16px;
-        font-weight: 800;
-        color: white;
-        cursor: pointer;
-        text-transform: uppercase;
-        box-shadow: 0 10px 20px rgba(37, 211, 102, 0.3);
-        animation: gradientMove 3s infinite alternate;
-    }
+/* INPUTS */
+input, select {
+    width: 95%;
+    padding: 14px;
+    border-radius: 10px;
+    border: 2px solid #ddd;
+    margin-top: 5px;
+}
 
-    @keyframes gradientMove {
-        0% { background-position: 0% 50%; }
-        100% { background-position: 100% 50%; }
-    }
-
-    /* --- CARROSSEL --- */
+/* BOTÃO */
+button {
+    width: 100%;
+    padding: 10px;
+    margin-top: 20px;
+    border: none;
+    border-radius: 40px;
+    background: linear-gradient(45deg, var(--verde), var(--amarelo));
+    font-weight: 800;
+    cursor: pointer;
+}
+/* --- CARROSSEL --- */
     .carousel {
         width: 100%;
-        height: 240px;
+        height: clamp(180px, 40vh, 260px);
         overflow: hidden;
         border-radius: 16px;
+        margin-bottom: 10px;
         background: white;
     }
 
     .carousel-track {
         display: flex;
         width: max-content;
-        animation: scroll 25s linear infinite;
+        animation: scroll 18s linear infinite;
     }
 
     .carousel-track img {
-        height: 240px;
+        height: clamp(180px, 40vh, 260px);
         width: auto;
-        min-width: 300px;
+        min-width: 280px;
         object-fit: contain;
         padding: 10px;
+        transition: 0.3s;
     }
 
-    @keyframes scroll {
-        0%   { transform: translateX(0); }
-        100% { transform: translateX(-50%); }
-    }
+@keyframes scroll {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(-50%); }
+}
 </style>
 </head>
 <body>
 
 <div class="main-wrapper">
-    <img src="https://www.image2url.com/r2/default/images/1779460228857-6f701fed-c991-4913-beca-427e25886962.png" alt="Logo" class="logo-top">
+    <img src="https://www.image2url.com/r2/default/images/1780318605532-0c5e2b58-86c8-401e-b9b4-eb590e2bca65.png" alt="Logo" class="logo-top">
 
     <div class="card">
         <h2 id="tituloMoto">Carregando Modelo...</h2>
