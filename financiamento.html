@@ -9,148 +9,103 @@
 <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800&display=swap" rel="stylesheet">
 
 <style>
-    /* --- CONFIGURAÇÕES GERAIS --- */
-    :root {
-    --honda-blue: #ffffff; /* agora vira amarelo principal */
-    --honda-dark: #fffffF /* fundo mais quente (amarelo escuro) */
-    --gold: #ffd700; /* dourado forte */
-    --red: #ff1a1a; /* vermelho destaque */
-    --whatsapp-green: #25d366;
+:root {
+    --verde: #009C3B;
+    --verde-escuro: #006B2A;
+    --amarelo: #00205f;
+    --azul: #002b15;
+    --azul-claro: #3E8EDE;
+    --branco: #ffffff;
 }
 
-    body {
-        margin: 0;
-        font-family: 'Montserrat', sans-serif;
-        background: linear-gradient(135deg, var(--honda-dark) 0%, var(--honda-blue) 100%);
-        min-height: 100vh;
-        padding: 20px;
-        color: #333;
-        display: flex;
-        flex-direction: column;
-        align-items: center; /* Centraliza no PC */
-    }
+/* FUNDO */
+body {
+    margin: 0;
+    font-family: 'Montserrat', sans-serif;
+    background: linear-gradient(135deg, var(--verde) 0%, var(--azul) 1%);
+    min-height: 100vh;
+    padding: 20px;
+    display: flex;
+    justify-content: center;
+}
 
-    /* --- CONTAINER PRINCIPAL (LIMITADOR PC) --- */
+ /* --- CONTAINER PRINCIPAL (LIMITADOR PC) --- */
     .main-wrapper {
         width: 100%;
         max-width: 600px; /* Largura ideal para desktop */
         position: relative;
         z-index: 1;
     }
-
-    /* --- LOGO RECOMPENSIVA --- */
+  /* --- LOGO RECOMPENSIVA --- */
     .logo-cpf {
         display: block;
         margin: 0 auto 20px auto;
         width: clamp(200px, 30vw, 150px);
         filter: drop-shadow(0 5px 15px rgba(0,0,0,0.6));
-        animation: pulseLogo 3s infinite alternate;
+        animation: pulseLogo 5s infinite alternate;
     }
 
-    @keyframes pulseLogo {
-        from { transform: scale(1); filter: drop-shadow(0 0 10px rgba(255, 215, 0, 0.4)); }
-        to { transform: scale(1.05); filter: drop-shadow(0 0 20px rgba(255, 215, 0, 0.8)); }
-    }
-
-    /* --- ESTILO DOS CARDS --- */
-    .card {
-        background: rgba(255, 255, 255, 0.98);
-        backdrop-filter: blur(10px);
-        padding: clamp(20px, 5vw, 30px);
-        border-radius: 24px;
-        box-shadow: 0 20px 50px rgba(0,0,0,0.4);
-        margin-bottom: 25px;
-        position: relative;
-        border: 1px solid rgba(255, 255, 255, 0.3);
-        transition: transform 0.3s ease;
-    }
-
-    @media (min-width: 768px) {
-        .card:hover { transform: translateY(-5px); }
-    }
-
-    .card::after {
-        content: "";
-        position: absolute;
-        top: 0; left: 0; right: 0;
-        height: 6px;
-        .card::after {
-    background: linear-gradient(90deg, #ffd700, #ffb000, #ff1a1a);
+/* CARDS */
+.card {
+    background: var(--branco);
+    padding: 25px;
+    border-radius: 20px;
+    margin-bottom: 20px;
+    position: relative;
 }
-        border-radius: 20px 20px 0 0;
-    }
 
-    h2 {
-        margin: 10px 0 20px;
-        font-size: clamp(1.2rem, 5vw, 1.6rem);
-        text-align: center;
-        text-transform: uppercase;
-        background: linear-gradient(45deg, #ff1a1a, #ffb000);
-        -webkit-background-clip: text;
-        -webkit-text-fill-color: transparent;
-        font-weight: 800;
-    }
+/* LINHA TOPO COLORIDA */
+.card::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 8px;
+    background: linear-gradient(90deg, var(--verde), var(--amarelo), var(--azul));
+    border-radius: 20px 20px 0 0;
+}
 
-    .moto-name {a
-        font-weight: 800;
-        font-size: clamp(1rem, 4vw, 1.3rem);
-        margin-bottom: 25px;
-        color: white;
-        text-align: center;
-        background: linear-gradient(90deg, #ff1a1a, #ff6a00);
-        padding: 12px 20px;
-        border-radius: 50px;
-        box-shadow: 0 4px 15px rgba(0, 85, 255, 0.3);
-        text-transform: uppercase;
-    }
+/* TITULOS */
+h2 {
+    text-align: center;
+    font-weight: 800;
+    background: linear-gradient(45deg, var(--verde), var(--azul));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
 
-    /* --- FORMULÁRIO --- */
-    label {
-        font-weight: 700;
-        margin-top: 15px;
-        display: block;
-        font-size: 13px;
-        color: #002266;
-        text-transform: uppercase;
-    }
+/* NOME DA MOTO */
+.moto-name {
+    background: linear-gradient(90deg, var(--verde), var(--amarelo));
+    color: #000;
+    padding: 12px;
+    border-radius: 30px;
+    text-align: center;
+    font-weight: 800;
+}
 
-    input, select {
-        width: 100%;
-        padding: 14px;
-        border-radius: 12px;
-        border: 2px solid #e0e6ed;
-        margin-top: 6px;
-        font-size: 16px;
-        background: #f8fafc;
-        font-family: 'Montserrat', sans-serif;
-        box-sizing: border-box;
-    }
+/* INPUTS */
+input, select {
+    width: 95%;
+    padding: 14px;
+    border-radius: 10px;
+    border: 2px solid #ddd;
+    margin-top: 5px;
+}
 
-    input:focus { border-color: var(--honda-blue); outline: none; background: white; }
-
-    button {
-        width: 100%;
-        padding: 18px;
-        background: linear-gradient(45deg, #128c7e, var(--whatsapp-green), #128c7e);
-        background-size: 200% auto;
-        border: none;
-        margin-top: 25px;
-        border-radius: 50px;
-        font-size: 16px;
-        font-weight: 800;
-        color: white;
-        cursor: pointer;
-        text-transform: uppercase;
-        box-shadow: 0 10px 20px rgba(37, 211, 102, 0.3);
-        animation: gradientMove 3s infinite alternate;
-    }
-
-    @keyframes gradientMove {
-        0% { background-position: 0% 50%; }
-        100% { background-position: 100% 50%; }
-    }
-
-    /* --- CARROSSEL --- */
+/* BOTÃO */
+button {
+    width: 100%;
+    padding: 10px;
+    margin-top: 20px;
+    border: none;
+    border-radius: 40px;
+    background: linear-gradient(45deg, var(--verde), var(--amarelo));
+    font-weight: 800;
+    cursor: pointer;
+}
+/* --- CARROSSEL --- */
     .carousel {
         width: 100%;
         height: clamp(180px, 40vh, 260px);
@@ -163,7 +118,7 @@
     .carousel-track {
         display: flex;
         width: max-content;
-        animation: scroll 25s linear infinite;
+        animation: scroll 18s linear infinite;
     }
 
     .carousel-track img {
@@ -175,40 +130,16 @@
         transition: 0.3s;
     }
 
-    @keyframes scroll {
-        0%   { transform: translateX(0); }
-        100% { transform: translateX(-50%); }
-    }
-
-    /* --- ZOOM VIEW --- */
-    #zoomView {
-        position: fixed;
-        top: 0; left: 0; width: 100%; height: 100%;
-        background: rgba(0, 16, 42, 0.98);
-        display: none;
-        justify-content: center;
-        align-items: center;
-        z-index: 9999;
-    }
-
-    #zoomView img {
-        width: 90%;
-        max-width: 800px;
-        border-radius: 15px;
-        border: 2px solid var(--gold);
-    }
-
-    /* Cores das bordas laterais */
-    input[name="nome"] { border-left: 5px solid var(--honda-blue); }
-    input[name="cpf"] { border-left: 5px solid var(--gold); }
-    input[name="whatsapp"] { border-left: 5px solid var(--whatsapp-green); }
-
+@keyframes scroll {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(-50%); }
+}
 </style>
 </head>
 <body>
 
 <div class="main-wrapper">
-    <img src="https://www.image2url.com/r2/default/images/1779460228857-6f701fed-c991-4913-beca-427e25886962.png" alt="Logo" class="logo-cpf">
+    <img src="https://www.image2url.com/r2/default/images/1780318605532-0c5e2b58-86c8-401e-b9b4-eb590e2bca65.png" alt="Logo" class="logo-cpf">
 
     <div class="card">
         <h2 id="tituloMoto">Carregando...</h2>
@@ -267,7 +198,7 @@
 
 <script>
 const motos = [
- { id:'BIZ125ES', nome:'BIZ 125 ES', img1:'https://www.honda.com.br/motos/sites/hda/files/2024-08/nova-carenagem-honda-biz-125-es_1560x624.webp', img2:'https://www.honda.com.br/motos/sites/hda/files/2024-08/novo-grafismo-honda-biz-125-es_1560x624.webp', img3:'https://www.honda.com.br/motos/sites/hda/files/2024-08/novo-painel-honda-biz-125-es_1560x624_fundo%20branco.webp' },
+ { id:'BIZ125ES', nome:'BIZ 125 ES', img1:'https://www.honda.com.br/motos/sites/hda/files/2026-05/Home%20-%20ES%20-%20Branco%20%28%20Ross%20White%20%29%20HERO%20%281%29.webp', img2:'https://www.honda.com.br/motos/sites/hda/files/2026-05/BIZ_Galeria_9.webp', img3:'https://www.honda.com.br/motos/sites/hda/files/2026-05/modal_features_design_1_1.webp' },
   { id:'BIZ125EX', nome:'BIZ 125 EX', img1:'https://www.honda.com.br/motos/sites/hda/files/2024-08/nova-carenagem-honda-biz-125-ex_1560x624.webp', img2:'https://www.honda.com.br/motos/sites/hda/files/2024-08/Biz_125_Diferencial_Freios_nas_duas_maos.webp', img3:'https://www.honda.com.br/motos/sites/hda/files/2024-08/luz-de-poscionamento-led-honda-biz-125-ex_2_1560x624.jpg' },
   { id:'CG160START', nome:'CG 160 START', img1:'https://www.honda.com.br/motos/sites/hda/files/2025-08/visao-frontal-da-lateral-direita-da-honda-cg-160-start.webp', img2:'https://www.honda.com.br/motos/sites/hda/files/2025-08/painel-da-moto-honda-cg-160-start.webp', img3:'https://www.honda.com.br/motos/sites/hda/files/2025-08/lanterna-traseira-em-led-da-moto-honda-cg-160-start.webp' },
   { id:'CG160FAN', nome:'CG 160 FAN', img1:'https://www.honda.com.br/motos/sites/hda/files/2025-08/visao-frontal-da-lateral-direita-da-honda-cg-160-fan.webp', img2:'https://www.honda.com.br/motos/sites/hda/files/2025-08/farol-da-moto-honda-cg-160-fan-.webp', img3:'https://www.honda.com.br/motos/sites/hda/files/2025-08/painel-da-moto-honda-cg-160-fan.webp' },
