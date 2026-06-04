@@ -194,15 +194,22 @@ button {
             <input name="cpf" id="cpfInput" placeholder="000.000.000-00" maxlength="14" required>
 <small id="cpfErro" style="color:red; display:none;">CPF inválido</small>
 
-            <label>Plano de parcelas *</label>
-            <select name="plano" id="planoSelect" required></select>
-
             <label>Tem pressa para contemplar? *</label>
-            <select name="pressa" required>
-                <option value="">Selecione uma opção</option>
-                <option>Sim, tenho pressa</option>
-                <option>Não, posso aguardar</option>
-            </select>
+<select name="pressa" id="pressaSelect" required>
+    <option value="">Selecione uma opção</option>
+    <option value="sim">Sim, tenho pressa</option>
+    <option value="nao">Não, posso aguardar</option>
+</select>
+
+<div id="parcelaIdealBox" style="display:none; margin-top:15px;">
+    <label>Qual valor de parcela seria ideal para você pagar por mês?</label>
+    <input type="number" name="parcelaIdeal" placeholder="Ex: 500">
+</div>
+
+<div id="planoBox">
+    <label>Plano de parcelas *</label>
+    <select name="plano" id="planoSelect" required></select>
+</div>
 
             <input type="hidden" name="moto" id="motoInput">
             <button type="submit">📲 Enviar para WhatsApp</button>
@@ -492,6 +499,28 @@ const track = document.getElementById('carouselTrack');
 track.innerHTML = [...moto.imgs, ...moto.imgs].map(img => `<img src="${img}">`).join('');
 
 const planoSelect = document.getElementById('planoSelect');
+
+  
+  const pressaSelect = document.getElementById("pressaSelect");
+const parcelaIdealBox = document.getElementById("parcelaIdealBox");
+const planoBox = document.getElementById("planoBox");
+
+pressaSelect.addEventListener("change", function(){
+
+    if(this.value === "sim"){
+
+        parcelaIdealBox.style.display = "block";
+        planoBox.style.display = "none";
+
+    }else{
+
+        parcelaIdealBox.style.display = "none";
+        planoBox.style.display = "block";
+
+    }
+
+});
+  
 Object.entries(moto.parcelas).forEach(([p,v])=>{
     const opt=document.createElement('option');
     opt.value = `${p}|${v.toFixed(2)}`;
@@ -504,15 +533,29 @@ document.getElementById('consForm').addEventListener('submit', e => {
   
     const d = Object.fromEntries(new FormData(e.target));
 
-    const [meses, valor] = d.plano.split("|");
-
-    const msg = `*SIMULAÇÃO CONSÓRCIO REVEMAR*
+    let msg = `*SIMULAÇÃO CONSÓRCIO REVEMAR*
 
 *Moto:* ${d.moto}
 *Nome:* ${d.nome}
 *CPF:* ${d.cpf}
+*Tem pressa:* ${d.pressa}
+`;
+
+if(d.pressa === "sim"){
+
+    msg += `
+*Parcela ideal:* R$ ${d.parcelaIdeal}
+`;
+
+}else{
+
+    const [meses, valor] = d.plano.split("|");
+
+    msg += `
 *Plano escolhido:* ${meses}x de R$ ${valor}
-*Tem pressa:* ${d.pressa}`;
+`;
+
+}
 
     location.href = `https://wa.me/5594992781498?text=${encodeURIComponent(msg)}`;
 });
