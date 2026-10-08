@@ -1,8 +1,8 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
-<head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
     <title>Honda Revemar — Fácil de Aprovar</title>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700;900&display=swap" rel="stylesheet">
     <style>
@@ -319,351 +319,466 @@
             .header-right { align-items: flex-start; text-align: left; }
         }
     </style>
-</head>
-<body>
-
-<canvas id="bg-canvas"></canvas>
-
-<header>
-    <img src="" id="logo-campanha" class="logo-campanha" alt="Honda Campanha">
-    <div class="header-right">
+  </head>
+  <body>
+    <canvas id="bg-canvas" width="1280" height="800"></canvas>
+    <header>
+      <img src="https://image2url.com/r2/bucket2/images/1767636595479-3f4280da-bfe1-4fc5-8128-1ca92c4073c6.png" id="logo-campanha" class="logo-campanha" alt="Honda Campanha">
+      <div class="header-right">
         <div style="font-weight: 900; color: #fff; text-shadow: 1px 1px 2px rgba(0,0,0,0.8); font-size: 1.2rem;">REVEMAR HONDA</div>
-        <div id="tema-label" style="font-size: 0.8rem; color: var(--theme-accent); font-weight: bold; letter-spacing: 1px; margin-bottom: 5px;"></div>
-    </div>
-</header>
-
-<div class="vendedor-topo">
-    <div class="vendedor-moldura">
+        <div id="tema-label" style="font-size: 0.8rem; color: var(--theme-accent); font-weight: bold; letter-spacing: 1px; margin-bottom: 5px;">ASAS DA LIBERDADE</div>
+      </div>
+    </header>
+    <div class="vendedor-topo">
+      <div class="vendedor-moldura">
         <img src="https://www.image2url.com/r2/default/images/1790188728734-b5e7810a-fe29-47b9-8641-3cd8be9c1498.jpg" alt="Vendedor">
-    </div>
-    
-    <div class="vendedor-info">
+      </div>
+      <div class="vendedor-info">
         <span class="cargo">Consultor de Vendas</span>
         <span class="nome-vendedor">Lucas Honda</span>
         <span style="font-size: 0.7rem; color:#cccccc;">Condições exclusivas liberadas para você!</span>
-        
         <a href="https://www.instagram.com/lucasdahondaoficial/" target="_blank" class="btn-insta">
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M224.1 141c-63.6 0-114.9 51.3-114.9 114.9s51.3 114.9 114.9 114.9S339 319.5 339 255.9 287.7 141 224.1 141zm0 189.6c-41.1 0-74.7-33.5-74.7-74.7s33.5-74.7 74.7-74.7 74.7 33.5 74.7 74.7-33.6 74.7-74.7 74.7zm146.4-194.3c0 14.9-12 26.8-26.8 26.8-14.9 0-26.8-12-26.8-26.8s12-26.8 26.8-26.8 26.8 12 26.8 26.8zm76.1 27.2c-1.7-35.9-9.9-67.7-36.2-93.9-26.2-26.2-58-34.4-93.9-36.2-37-2.1-147.9-2.1-184.9 0-35.8 1.7-67.6 9.9-93.9 36.1s-34.4 58-36.2 93.9c-2.1 37-2.1 147.9 0 184.9 1.7 35.9 9.9 67.7 36.2 93.9s58 34.4 93.9 36.2c37 2.1 147.9 2.1 184.9 0 35.9-1.7 67.7-9.9 93.9-36.2 26.2-26.2 34.4-58 36.2-93.9 2.1-37 2.1-147.8 0-184.8zM398.8 388c-7.8 19.6-22.9 34.7-42.6 42.6-29.5 11.7-99.5 9-132.1 9s-102.7 2.6-132.1-9c-19.6-7.8-34.7-22.9-42.6-42.6-11.7-29.5-9-99.5-9-132.1s-2.6-102.7 9-132.1c7.8-19.6 22.9-34.7 42.6-42.6 29.5-11.7 99.5-9 132.1-9s102.7-2.6 132.1 9c19.6 7.8 34.7 22.9 42.6 42.6 11.7 29.5 9 99.5 9 132.1s2.7 102.7-9 132.1z"/></svg>
-            Siga meu Instagram
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512">
+            <path d="M224.1 141c-63.6 0-114.9 51.3-114.9 114.9s51.3 114.9 114.9 114.9S339 319.5 339 255.9 287.7 141 224.1 141zm0 189.6c-41.1 0-74.7-33.5-74.7-74.7s33.5-74.7 74.7-74.7 74.7 33.5 74.7 74.7-33.6 74.7-74.7 74.7zm146.4-194.3c0 14.9-12 26.8-26.8 26.8-14.9 0-26.8-12-26.8-26.8s12-26.8 26.8-26.8 26.8 12 26.8 26.8zm76.1 27.2c-1.7-35.9-9.9-67.7-36.2-93.9-26.2-26.2-58-34.4-93.9-36.2-37-2.1-147.9-2.1-184.9 0-35.8 1.7-67.6 9.9-93.9 36.1s-34.4 58-36.2 93.9c-2.1 37-2.1 147.9 0 184.9 1.7 35.9 9.9 67.7 36.2 93.9s58 34.4 93.9 36.2c37 2.1 147.9 2.1 184.9 0 35.9-1.7 67.7-9.9 93.9-36.2 26.2-26.2 34.4-58 36.2-93.9 2.1-37 2.1-147.8 0-184.8zM398.8 388c-7.8 19.6-22.9 34.7-42.6 42.6-29.5 11.7-99.5 9-132.1 9s-102.7 2.6-132.1-9c-19.6-7.8-34.7-22.9-42.6-42.6-11.7-29.5-9-99.5-9-132.1s-2.6-102.7 9-132.1c7.8-19.6 22.9-34.7 42.6-42.6 29.5-11.7 99.5-9 132.1-9s102.7-2.6 132.1 9c19.6 7.8 34.7 22.9 42.6 42.6 11.7 29.5 9 99.5 9 132.1s2.7 102.7-9 132.1z"></path>
+          </svg>
+          Siga meu Instagram
         </a>
+      </div>
     </div>
-</div>
-
-<main class="container">
-    <h1 class="section-title" id="titulo-principal"></h1>
-    <div class="moto-grid" id="motoGrid"></div>
-</main>
-
-<a class="agente-ia"
-   href="https://wa.me/94992781498?text=Vim%20atrav%C3%A9s%20do%20site%20e%20tenho%20interesse%20em%20uma%20moto%20Honda" target="_blank"
-   title="Fale comigo agora">
-    <img class="agente-foto"
-         src="https://www.image2url.com/r2/default/images/1790188728734-b5e7810a-fe29-47b9-8641-3cd8be9c1498.jpg"
-         alt="Lucas da Honda">
-    <div class="agente-texto">
+    <main class="container">
+      <h1 class="section-title" id="titulo-principal">CONDIÇÕES IMPERDÍVEIS</h1>
+      <div class="moto-grid" id="motoGrid">
+        <div class="moto-card">
+          <div class="moto-stage" onclick="executarAnimacao(this, 0)" data-current-img="0">
+            <div class="placa-ano">OFERTA</div>
+            <img src="https://www.image2url.com/r2/default/images/1790188842741-17571ec1-da38-42fa-9f65-51c1f0db61a2.png" class="decoracao-pendurada">
+            <div class="burnout-smoke"></div>
+            <div class="pneu-mark"></div>
+            <img src="https://www.image2url.com/r2/default/images/1778166206972-b4fae2ec-de1a-480d-af24-3e167bd96a35.png" class="moto-img">
+          </div>
+          <div class="card-info">
+            <h3 class="moto-name">POP 110i ES</h3>
+            <div class="moto-price">À vista R$ 17.446</div>
+            <div class="btn-box">
+              <a href="financiamento.html?moto=POP110" class="btn-action btn-fin">Financiar</a>
+              <a href="Consórcio.html?moto=POP110" class="btn-action btn-cons">Consórcio</a>
+            </div>
+          </div>
+        </div>
+        <div class="moto-card">
+          <div class="moto-stage" onclick="executarAnimacao(this, 1)" data-current-img="0">
+            <div class="placa-ano">OFERTA</div>
+            <img src="https://www.image2url.com/r2/default/images/1790188842741-17571ec1-da38-42fa-9f65-51c1f0db61a2.png" class="decoracao-pendurada">
+            <div class="burnout-smoke"></div>
+            <div class="pneu-mark"></div>
+            <img src="https://www.honda.com.br/motos/sites/hda/files/2026-05/Home%20-%20ES%20-%20Cinza%20Met%C3%A1lico%20%28%20Mat%20Cynos%20Gray%20Metallic%20%29.webp" class="moto-img">
+          </div>
+          <div class="card-info">
+            <h3 class="moto-name">BIZ 125 ES</h3>
+            <div class="moto-price">À vista R$ 21.081</div>
+            <div class="btn-box">
+              <a href="financiamento.html?moto=BIZ125ES" class="btn-action btn-fin">Financiar</a>
+              <a href="Consórcio.html?moto=BIZ125ES" class="btn-action btn-cons">Consórcio</a>
+            </div>
+          </div>
+        </div>
+        <div class="moto-card">
+          <div class="moto-stage" onclick="executarAnimacao(this, 2)" data-current-img="0">
+            <div class="placa-ano">OFERTA</div>
+            <img src="https://www.image2url.com/r2/default/images/1790188842741-17571ec1-da38-42fa-9f65-51c1f0db61a2.png" class="decoracao-pendurada">
+            <div class="burnout-smoke"></div>
+            <div class="pneu-mark"></div>
+            <img src="https://www.honda.com.br/motos/sites/hda/files/2026-05/Home%20-%20EX%20-%20Cinza%20Perolizado%20%28%20Pearl%20Stark%20Gray%20%29%20HERO.webp" class="moto-img">
+          </div>
+          <div class="card-info">
+            <h3 class="moto-name">BIZ 125 EX</h3>
+            <div class="moto-price">À vista R$ 25.557</div>
+            <div class="btn-box">
+              <a href="financiamento.html?moto=BIZ125EX" class="btn-action btn-fin">Financiar</a>
+              <a href="Consórcio.html?moto=BIZ125EX" class="btn-action btn-cons">Consórcio</a>
+            </div>
+          </div>
+        </div>
+        <div class="moto-card">
+          <div class="moto-stage" onclick="executarAnimacao(this, 3)" data-current-img="0">
+            <div class="placa-ano">OFERTA</div>
+            <img src="https://www.image2url.com/r2/default/images/1790188842741-17571ec1-da38-42fa-9f65-51c1f0db61a2.png" class="decoracao-pendurada">
+            <div class="burnout-smoke"></div>
+            <div class="pneu-mark"></div>
+            <img src="https://www.honda.com.br/motos/sites/hda/files/2026-02/scooter-honda-roxa-vista-lateral.webp" class="moto-img">
+          </div>
+          <div class="card-info">
+            <h3 class="moto-name">Elite 125</h3>
+            <div class="moto-price">À vista R$ 19.923</div>
+            <div class="btn-box">
+              <a href="financiamento.html?moto=ELITE125" class="btn-action btn-fin">Financiar</a>
+              <a href="Consórcio.html?moto=ELITE125" class="btn-action btn-cons">Consórcio</a>
+            </div>
+          </div>
+        </div>
+        <div class="moto-card">
+          <div class="moto-stage" onclick="executarAnimacao(this, 4)" data-current-img="0">
+            <div class="placa-ano">OFERTA</div>
+            <img src="https://www.image2url.com/r2/default/images/1790188842741-17571ec1-da38-42fa-9f65-51c1f0db61a2.png" class="decoracao-pendurada">
+            <div class="burnout-smoke"></div>
+            <div class="pneu-mark"></div>
+            <img src="https://www.honda.com.br/motos/sites/hda/files/2025-08/imagem-home-honda-pcx-branco_0.webp" class="moto-img">
+          </div>
+          <div class="card-info">
+            <h3 class="moto-name">PCX CBS</h3>
+            <div class="moto-price">À vista R$ 25.083</div>
+            <div class="btn-box">
+              <a href="financiamento.html?moto=PCX" class="btn-action btn-fin">Financiar</a>
+              <a href="Consórcio.html?moto=PCX" class="btn-action btn-cons">Consórcio</a>
+            </div>
+          </div>
+        </div>
+        <div class="moto-card">
+          <div class="moto-stage" onclick="executarAnimacao(this, 5)" data-current-img="0">
+            <div class="placa-ano">OFERTA</div>
+            <img src="https://www.image2url.com/r2/default/images/1790188842741-17571ec1-da38-42fa-9f65-51c1f0db61a2.png" class="decoracao-pendurada">
+            <div class="burnout-smoke"></div>
+            <div class="pneu-mark"></div>
+            <img src="https://image2url.com/r2/bucket3/images/1767705525933-5a8cc60a-5afb-45ee-bb02-4d1cc2699a64.png" class="moto-img">
+          </div>
+          <div class="card-info">
+            <h3 class="moto-name">PCX ABS</h3>
+            <div class="moto-price">À vista R$ 27.319</div>
+            <div class="btn-box">
+              <a href="financiamento.html?moto=PCXABS" class="btn-action btn-fin">Financiar</a>
+              <a href="Consórcio.html?moto=PCXABS" class="btn-action btn-cons">Consórcio</a>
+            </div>
+          </div>
+        </div>
+        <div class="moto-card">
+          <div class="moto-stage" onclick="executarAnimacao(this, 6)" data-current-img="0">
+            <div class="placa-ano">OFERTA</div>
+            <img src="https://www.image2url.com/r2/default/images/1790188842741-17571ec1-da38-42fa-9f65-51c1f0db61a2.png" class="decoracao-pendurada">
+            <div class="burnout-smoke"></div>
+            <div class="pneu-mark"></div>
+            <img src="https://www.honda.com.br/motos/sites/hda/files/2025-08/Imagem-Home-Honda-ADV-Prata-Met%C3%A1lico_0.webp" class="moto-img">
+          </div>
+          <div class="card-info">
+            <h3 class="moto-name">Honda ADV</h3>
+            <div class="moto-price">À vista R$ 33.584</div>
+            <div class="btn-box">
+              <a href="financiamento.html?moto=HONADA_ADV" class="btn-action btn-fin">Financiar</a>
+              <a href="Consórcio.html?moto=HONADA_ADV" class="btn-action btn-cons">Consórcio</a>
+            </div>
+          </div>
+        </div>
+        <div class="moto-card">
+          <div class="moto-stage" onclick="executarAnimacao(this, 7)" data-current-img="0">
+            <div class="placa-ano">OFERTA</div>
+            <img src="https://www.image2url.com/r2/default/images/1790188842741-17571ec1-da38-42fa-9f65-51c1f0db61a2.png" class="decoracao-pendurada">
+            <div class="burnout-smoke"></div>
+            <div class="pneu-mark"></div>
+            <img src="https://www.honda.com.br/motos/sites/hda/files/2025-08/Imagem-home-visao-da-lateral-direita-da-honda-cg-160-start.webp" class="moto-img">
+          </div>
+          <div class="card-info">
+            <h3 class="moto-name">CG 160 START</h3>
+            <div class="moto-price">À vista R$ 25.469</div>
+            <div class="btn-box">
+              <a href="financiamento.html?moto=CG160START" class="btn-action btn-fin">Financiar</a>
+              <a href="Consórcio.html?moto=CG160START" class="btn-action btn-cons">Consórcio</a>
+            </div>
+          </div>
+        </div>
+        <div class="moto-card">
+          <div class="moto-stage" onclick="executarAnimacao(this, 8)" data-current-img="0">
+            <div class="placa-ano">OFERTA</div>
+            <img src="https://www.image2url.com/r2/default/images/1790188842741-17571ec1-da38-42fa-9f65-51c1f0db61a2.png" class="decoracao-pendurada">
+            <div class="burnout-smoke"></div>
+            <div class="pneu-mark"></div>
+            <img src="https://www.honda.com.br/motos/sites/hda/files/2025-08/Imagem-Home-Honda-CG-160-Fan-Vermelho-Perolizado.webp" class="moto-img">
+          </div>
+          <div class="card-info">
+            <h3 class="moto-name">CG 160 FAN</h3>
+            <div class="moto-price">À vista R$ 27.581</div>
+            <div class="btn-box">
+              <a href="financiamento.html?moto=CG160FAN" class="btn-action btn-fin">Financiar</a>
+              <a href="Consórcio.html?moto=CG160FAN" class="btn-action btn-cons">Consórcio</a>
+            </div>
+          </div>
+        </div>
+        <div class="moto-card">
+          <div class="moto-stage" onclick="executarAnimacao(this, 9)" data-current-img="0">
+            <div class="placa-ano">OFERTA</div>
+            <img src="https://www.image2url.com/r2/default/images/1790188842741-17571ec1-da38-42fa-9f65-51c1f0db61a2.png" class="decoracao-pendurada">
+            <div class="burnout-smoke"></div>
+            <div class="pneu-mark"></div>
+            <img src="https://www.honda.com.br/motos/sites/hda/files/2025-08/Imagem-Home-Honda-CG-160-Titan-Cinza-Met%C3%A1lico.webp" class="moto-img">
+          </div>
+          <div class="card-info">
+            <h3 class="moto-name">CG 160 TITAN</h3>
+            <div class="moto-price">À vista R$ 29.430</div>
+            <div class="btn-box">
+              <a href="financiamento.html?moto=CG160TITAN" class="btn-action btn-fin">Financiar</a>
+              <a href="Consórcio.html?moto=CG160TITAN" class="btn-action btn-cons">Consórcio</a>
+            </div>
+          </div>
+        </div>
+        <div class="moto-card">
+          <div class="moto-stage" onclick="executarAnimacao(this, 10)" data-current-img="0">
+            <div class="placa-ano">OFERTA</div>
+            <img src="https://www.image2url.com/r2/default/images/1790188842741-17571ec1-da38-42fa-9f65-51c1f0db61a2.png" class="decoracao-pendurada">
+            <div class="burnout-smoke"></div>
+            <div class="pneu-mark"></div>
+            <img src="https://www.honda.com.br/motos/sites/hda/files/2026-09/0260%20HONDA%20MOTOS%2031-08-26%20ok%20b.webp" class="moto-img">
+          </div>
+          <div class="card-info">
+            <h3 class="moto-name">NXR 160 BROS ABS</h3>
+            <div class="moto-price">À vista R$ 33.567</div>
+            <div class="btn-box">
+              <a href="financiamento.html?moto=NXR160ABS" class="btn-action btn-fin">Financiar</a>
+              <a href="Consórcio.html?moto=NXR160ABS" class="btn-action btn-cons">Consórcio</a>
+            </div>
+          </div>
+        </div>
+        <div class="moto-card">
+          <div class="moto-stage" onclick="executarAnimacao(this, 11)" data-current-img="0">
+            <div class="placa-ano">OFERTA</div>
+            <img src="https://www.image2url.com/r2/default/images/1790188842741-17571ec1-da38-42fa-9f65-51c1f0db61a2.png" class="decoracao-pendurada">
+            <div class="burnout-smoke"></div>
+            <div class="pneu-mark"></div>
+            <img src="https://www.honda.com.br/motos/sites/hda/files/2026-09/0108%20HONDA%20MOTOS%2031-08-26%20ok%20b.webp" class="moto-img">
+          </div>
+          <div class="card-info">
+            <h3 class="moto-name">NXR 160 BROS CBS</h3>
+            <div class="moto-price">À vista R$ 32.066</div>
+            <div class="btn-box">
+              <a href="financiamento.html?moto=NXR160BRS" class="btn-action btn-fin">Financiar</a>
+              <a href="Consórcio.html?moto=NXR160BRS" class="btn-action btn-cons">Consórcio</a>
+            </div>
+          </div>
+        </div>
+        <div class="moto-card">
+          <div class="moto-stage" onclick="executarAnimacao(this, 12)" data-current-img="0">
+            <div class="placa-ano">OFERTA</div>
+            <img src="https://www.image2url.com/r2/default/images/1790188842741-17571ec1-da38-42fa-9f65-51c1f0db61a2.png" class="decoracao-pendurada">
+            <div class="burnout-smoke"></div>
+            <div class="pneu-mark"></div>
+            <img src="https://www.motopel.com.br/site/wp-content/uploads/2021/02/xre-190-azul.webp" class="moto-img">
+          </div>
+          <div class="card-info">
+            <h3 class="moto-name">XRE 190</h3>
+            <div class="moto-price">À vista R$ 32.580</div>
+            <div class="btn-box">
+              <a href="financiamento.html?moto=XRE190" class="btn-action btn-fin">Financiar</a>
+              <a href="Consórcio.html?moto=XRE190" class="btn-action btn-cons">Consórcio</a>
+            </div>
+          </div>
+        </div>
+        <div class="moto-card">
+          <div class="moto-stage" onclick="executarAnimacao(this, 13)" data-current-img="0">
+            <div class="placa-ano">OFERTA</div>
+            <img src="https://www.image2url.com/r2/default/images/1790188842741-17571ec1-da38-42fa-9f65-51c1f0db61a2.png" class="decoracao-pendurada">
+            <div class="burnout-smoke"></div>
+            <div class="pneu-mark"></div>
+            <img src="https://www.honda.com.br/motos/sites/hda/files/2026-07/0164%20HONDA%2029-06-26%20ok.webp" class="moto-img">
+          </div>
+          <div class="card-info">
+            <h3 class="moto-name">XR 300L TORNADO</h3>
+            <div class="moto-price">À vista R$ 40.770</div>
+            <div class="btn-box">
+              <a href="financiamento.html?moto=XR300LT" class="btn-action btn-fin">Financiar</a>
+              <a href="Consórcio.html?moto=XR300LT" class="btn-action btn-cons">Consórcio</a>
+            </div>
+          </div>
+        </div>
+        <div class="moto-card">
+          <div class="moto-stage" onclick="executarAnimacao(this, 14)" data-current-img="0">
+            <div class="placa-ano">OFERTA</div>
+            <img src="https://www.image2url.com/r2/default/images/1790188842741-17571ec1-da38-42fa-9f65-51c1f0db61a2.png" class="decoracao-pendurada">
+            <div class="burnout-smoke"></div>
+            <div class="pneu-mark"></div>
+            <img src="https://www.motopel.com.br/site/wp-content/uploads/2025/08/capa-crf-300f.webp" class="moto-img">
+          </div>
+          <div class="card-info">
+            <h3 class="moto-name">CRF 300F</h3>
+            <div class="moto-price">À vista R$ 31.756</div>
+            <div class="btn-box">
+              <a href="financiamento.html?moto=CRF300F" class="btn-action btn-fin">Financiar</a>
+              <a href="Consórcio.html?moto=CRF300F" class="btn-action btn-cons">Consórcio</a>
+            </div>
+          </div>
+        </div>
+        <div class="moto-card">
+          <div class="moto-stage" onclick="executarAnimacao(this, 15)" data-current-img="0">
+            <div class="placa-ano">OFERTA</div>
+            <img src="https://www.image2url.com/r2/default/images/1790188842741-17571ec1-da38-42fa-9f65-51c1f0db61a2.png" class="decoracao-pendurada">
+            <div class="burnout-smoke"></div>
+            <div class="pneu-mark"></div>
+            <img src="https://www.honda.com.br/motos/sites/hda/files/2026-09/Twister%20ABS%20Vermelha%20-%20Lateral%20360%20-%20DESKTOP.webp" class="moto-img">
+          </div>
+          <div class="card-info">
+            <h3 class="moto-name">CB 300F TWISTER ABS</h3>
+            <div class="moto-price">À vista R$ 35.370</div>
+            <div class="btn-box">
+              <a href="financiamento.html?moto=CB300FTWABS" class="btn-action btn-fin">Financiar</a>
+              <a href="Consórcio.html?moto=CB300FTWABS" class="btn-action btn-cons">Consórcio</a>
+            </div>
+          </div>
+        </div>
+        <div class="moto-card">
+          <div class="moto-stage" onclick="executarAnimacao(this, 16)" data-current-img="0">
+            <div class="placa-ano">OFERTA</div>
+            <img src="https://www.image2url.com/r2/default/images/1790188842741-17571ec1-da38-42fa-9f65-51c1f0db61a2.png" class="decoracao-pendurada">
+            <div class="burnout-smoke"></div>
+            <div class="pneu-mark"></div>
+            <img src="https://www.honda.com.br/motos/sites/hda/files/2026-08/Imagem-home-honda-Twister-S-AZUL.webp" class="moto-img">
+          </div>
+          <div class="card-info">
+            <h3 class="moto-name">CB 300F TWISTER ABS S</h3>
+            <div class="moto-price">À vista R$ 36,357</div>
+            <div class="btn-box">
+              <a href="financiamento.html?moto=CB300FTWABS S" class="btn-action btn-fin">Financiar</a>
+              <a href="Consórcio.html?moto=CB300FTWABS S" class="btn-action btn-cons">Consórcio</a>
+            </div>
+          </div>
+        </div>
+        <div class="moto-card">
+          <div class="moto-stage" onclick="executarAnimacao(this, 17)" data-current-img="0">
+            <div class="placa-ano">OFERTA</div>
+            <img src="https://www.image2url.com/r2/default/images/1790188842741-17571ec1-da38-42fa-9f65-51c1f0db61a2.png" class="decoracao-pendurada">
+            <div class="burnout-smoke"></div>
+            <div class="pneu-mark"></div>
+            <img src="https://www.honda.com.br/motos/sites/hda/files/2026-07/0302%20HONDA%2029-06-26.webp" class="moto-img">
+          </div>
+          <div class="card-info">
+            <h3 class="moto-name">SAHARA 300 ABS</h3>
+            <div class="moto-price">À vista R$ 41.426</div>
+            <div class="btn-box">
+              <a href="financiamento.html?moto=SAHARA300ABS" class="btn-action btn-fin">Financiar</a>
+              <a href="Consórcio.html?moto=SAHARA300ABS" class="btn-action btn-cons">Consórcio</a>
+            </div>
+          </div>
+        </div>
+        <div class="moto-card">
+          <div class="moto-stage" onclick="executarAnimacao(this, 18)" data-current-img="0">
+            <div class="placa-ano">OFERTA</div>
+            <img src="https://www.image2url.com/r2/default/images/1790188842741-17571ec1-da38-42fa-9f65-51c1f0db61a2.png" class="decoracao-pendurada">
+            <div class="burnout-smoke"></div>
+            <div class="pneu-mark"></div>
+            <img src="https://www.honda.com.br/motos/sites/hda/files/2026-07/0058%20HONDA%2029-06-26%20ok.webp" class="moto-img">
+          </div>
+          <div class="card-info">
+            <h3 class="moto-name">SAHARA 300 RALLY</h3>
+            <div class="moto-price">À vista R$ 42.376</div>
+            <div class="btn-box">
+              <a href="financiamento.html?moto=SAHARA300RALLY" class="btn-action btn-fin">Financiar</a>
+              <a href="Consórcio.html?moto=SAHARA300RALLY" class="btn-action btn-cons">Consórcio</a>
+            </div>
+          </div>
+        </div>
+        <div class="moto-card">
+          <div class="moto-stage" onclick="executarAnimacao(this, 19)" data-current-img="0">
+            <div class="placa-ano">OFERTA</div>
+            <img src="https://www.image2url.com/r2/default/images/1790188842741-17571ec1-da38-42fa-9f65-51c1f0db61a2.png" class="decoracao-pendurada">
+            <div class="burnout-smoke"></div>
+            <div class="pneu-mark"></div>
+            <img src="https://www.honda.com.br/motos/sites/hda/files/2026-07/0048%20HONDA%2029-06-26%20ok.webp" class="moto-img">
+          </div>
+          <div class="card-info">
+            <h3 class="moto-name">SAHARA 300 ADV</h3>
+            <div class="moto-price">À vista R$ 42.731</div>
+            <div class="btn-box">
+              <a href="financiamento.html?moto=SAHARA300ADV" class="btn-action btn-fin">Financiar</a>
+              <a href="Consórcio.html?moto=SAHARA300ADV" class="btn-action btn-cons">Consórcio</a>
+            </div>
+          </div>
+        </div>
+        <div class="moto-card">
+          <div class="moto-stage" onclick="executarAnimacao(this, 20)" data-current-img="0">
+            <div class="placa-ano">OFERTA</div>
+            <img src="https://www.image2url.com/r2/default/images/1790188842741-17571ec1-da38-42fa-9f65-51c1f0db61a2.png" class="decoracao-pendurada">
+            <div class="burnout-smoke"></div>
+            <div class="pneu-mark"></div>
+            <img src="https://www.honda.com.br/motos/sites/hda/files/2026-06/Home_3.webp" class="moto-img">
+          </div>
+          <div class="card-info">
+            <h3 class="moto-name">CB 500 HORNET</h3>
+            <div class="moto-price">À vista R$ 52.316</div>
+            <div class="btn-box">
+              <a href="financiamento.html?moto=CB500HOR" class="btn-action btn-fin">Financiar</a>
+              <a href="Consórcio.html?moto=CB500HOR" class="btn-action btn-cons">Consórcio</a>
+            </div>
+          </div>
+        </div>
+        <div class="moto-card">
+          <div class="moto-stage" onclick="executarAnimacao(this, 21)" data-current-img="0">
+            <div class="placa-ano">OFERTA</div>
+            <img src="https://www.image2url.com/r2/default/images/1790188842741-17571ec1-da38-42fa-9f65-51c1f0db61a2.png" class="decoracao-pendurada">
+            <div class="burnout-smoke"></div>
+            <div class="pneu-mark"></div>
+            <img src="https://www.motopel.com.br/site/wp-content/uploads/2025/07/capa-nx-500-2026-vermelha.webp" class="moto-img">
+          </div>
+          <div class="card-info">
+            <h3 class="moto-name">NX 500</h3>
+            <div class="moto-price">À vista R$ 55.462</div>
+            <div class="btn-box">
+              <a href="financiamento.html?moto=NX500" class="btn-action btn-fin">Financiar</a>
+              <a href="Consórcio.html?moto=NX500" class="btn-action btn-cons">Consórcio</a>
+            </div>
+          </div>
+        </div>
+        <div class="moto-card">
+          <div class="moto-stage" onclick="executarAnimacao(this, 22)" data-current-img="0">
+            <div class="placa-ano">OFERTA</div>
+            <img src="https://www.image2url.com/r2/default/images/1790188842741-17571ec1-da38-42fa-9f65-51c1f0db61a2.png" class="decoracao-pendurada">
+            <div class="burnout-smoke"></div>
+            <div class="pneu-mark"></div>
+            <img src="https://www.honda.com.br/motos/sites/hda/files/2025-10/Lateral-v_5.webp" class="moto-img">
+          </div>
+          <div class="card-info">
+            <h3 class="moto-name">NC 750X</h3>
+            <div class="moto-price">À vista R$ 67.122</div>
+            <div class="btn-box">
+              <a href="financiamento.html?moto=NC750X" class="btn-action btn-fin">Financiar</a>
+              <a href="Consórcio.html?moto=NC750X" class="btn-action btn-cons">Consórcio</a>
+            </div>
+          </div>
+        </div>
+        <div class="moto-card">
+          <div class="moto-stage" onclick="executarAnimacao(this, 23)" data-current-img="0">
+            <div class="placa-ano">OFERTA</div>
+            <img src="https://www.image2url.com/r2/default/images/1790188842741-17571ec1-da38-42fa-9f65-51c1f0db61a2.png" class="decoracao-pendurada">
+            <div class="burnout-smoke"></div>
+            <div class="pneu-mark"></div>
+            <img src="https://www.honda.com.br/motos/sites/hda/files/2026-08/Home_860x550_6.webp" class="moto-img">
+          </div>
+          <div class="card-info">
+            <h3 class="moto-name">CB 1000R HORNET</h3>
+            <div class="moto-price">À vista R$ 89.799</div>
+            <div class="btn-box">
+              <a href="financiamento.html?moto=CB1000HORNET" class="btn-action btn-fin">Financiar</a>
+              <a href="Consórcio.html?moto=CB1000HORNET" class="btn-action btn-cons">Consórcio</a>
+            </div>
+          </div>
+        </div>
+        <div class="moto-card">
+          <div class="moto-stage" onclick="executarAnimacao(this, 24)" data-current-img="0">
+            <div class="placa-ano">OFERTA</div>
+            <img src="https://www.image2url.com/r2/default/images/1790188842741-17571ec1-da38-42fa-9f65-51c1f0db61a2.png" class="decoracao-pendurada">
+            <div class="burnout-smoke"></div>
+            <div class="pneu-mark"></div>
+            <img src="https://www.honda.com.br/motos/sites/hda/files/2025-12/CRF1100L-Africa-Twin-DCT-ES-vista-lateralmente.webp" class="moto-img">
+          </div>
+          <div class="card-info">
+            <h3 class="moto-name">CRF 1100L AFRICA TWIN</h3>
+            <div class="moto-price">À vista R$ 99.890</div>
+            <div class="btn-box">
+              <a href="financiamento.html?moto=CRF1100L" class="btn-action btn-fin">Financiar</a>
+              <a href="Consórcio.html?moto=CRF1100L" class="btn-action btn-cons">Consórcio</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+    <a class="agente-ia" href="https://wa.me/94992781498?text=Vim%20atrav%C3%A9s%20do%20site%20e%20tenho%20interesse%20em%20uma%20moto%20Honda" target="_blank" title="Fale comigo agora">
+      <img class="agente-foto" src="https://www.image2url.com/r2/default/images/1790188728734-b5e7810a-fe29-47b9-8641-3cd8be9c1498.jpg" alt="Lucas da Honda">
+      <div class="agente-texto">
         <strong>Lucas da Honda</strong>
         <span>Fale comigo agora</span>
-    </div>
-</a>
-
-<script>
-/* =========================================
-   2. MÓDULO DE TEXTOS E IMAGENS (MANTIDO INTACTO)
-   ========================================= */
-const CONFIG_TEMA = {
-    nomeCampanha: "ASAS DA LIBERDADE",
-    tituloSite: "CONDIÇÕES IMPERDÍVEIS",
-    tagMiniatura: "OFERTA", 
-    logoURL: "https://image2url.com/r2/bucket2/images/1767636595479-3f4280da-bfe1-4fc5-8128-1ca92c4073c6.png", 
-    enfeiteIcone: "https://www.image2url.com/r2/default/images/1790188842741-17571ec1-da38-42fa-9f65-51c1f0db61a2.png", 
-    anoVigente: "2026"
-};
-
-const MOTOS = [
-{
-  id:'POP110', nome:'POP 110i ES', ano:2027, precoAvista:'R$ 17.446',
-  imgs:[
-    'https://www.image2url.com/r2/default/images/1778166206972-b4fae2ec-de1a-480d-af24-3e167bd96a35.png',
-    'https://www.image2url.com/r2/default/images/1778166248475-fbec0bc9-a271-4777-aaaa-ac87d0ef7bf5.png',
-    'https://www.image2url.com/r2/default/images/1778166333238-322cca64-ce56-4ebf-a66e-68877e369098.png'
-  ]
-},
-{
-  id:'BIZ125ES', nome:'BIZ 125 ES', ano:2027, precoAvista:'R$ 21.081',
-  imgs:[
-    'https://www.honda.com.br/motos/sites/hda/files/2026-05/Home%20-%20ES%20-%20Cinza%20Met%C3%A1lico%20%28%20Mat%20Cynos%20Gray%20Metallic%20%29.webp',
-    'https://www.honda.com.br/motos/sites/hda/files/2026-05/Home%20-%20ES%20-%20Branco%20%28%20Ross%20White%20%29%20HERO%20%281%29.webp',
-  ]
-},
-{
-  id:'BIZ125EX', nome:'BIZ 125 EX', ano:2027, precoAvista:'R$ 25.567',
-  imgs:[
-    'https://www.honda.com.br/motos/sites/hda/files/2026-05/Home%20-%20EX%20-%20Cinza%20Perolizado%20%28%20Pearl%20Stark%20Gray%20%29%20HERO.webp',
-    'https://www.honda.com.br/motos/sites/hda/files/2026-05/Home%20-%20EX%20-%20Azul%20Escuro%20%28%20Pearl%20Cruzeiro%20Blue%29.webp',
-    'https://www.honda.com.br/motos/sites/hda/files/2026-05/Home%20-%20EX%20-%20Vermelho%20Met%C3%A1lico%20%28%20Pearl%20Royalty%20Red%20%29.webp','https://www.honda.com.br/motos/sites/hda/files/2026-05/Home%20-%20EX%20-%20Branco%20Perolizado%20%28%20Pearl%20Lily%20Cream%20%29.webp'
-  ]
-},
-{
-  id:'ELITE125', nome:'Elite 125', ano:2027, precoAvista:'R$ 19.933',
-  imgs:[
-    'https://www.honda.com.br/motos/sites/hda/files/2026-02/scooter-honda-roxa-vista-lateral.webp',
-    'https://www.honda.com.br/motos/sites/hda/files/2026-02/Scooter%20Honda%20vermelha%20vis%C3%A3o%20lateral_0.webp',
-    'https://www.honda.com.br/motos/sites/hda/files/2026-02/scooter%20honda%20cinza%20perolizado%20vista%20lateral.webp',
-    'https://www.honda.com.br/motos/sites/hda/files/2026-02/scooter%20honda%20cinza%20met%C3%A1lico%20vista%20lateral.webp'
-  ]
-},
-{
-  id:'PCX', nome:'PCX CBS', ano:2027, precoAvista:'R$ 25.083',
-  imgs:['https://www.honda.com.br/motos/sites/hda/files/2025-08/imagem-home-honda-pcx-branco_0.webp']
-},
-{
-  id:'PCXABS', nome:'PCX ABS', ano:2027, precoAvista:'R$ 27.329',
-  imgs:['https://image2url.com/r2/bucket3/images/1767705525933-5a8cc60a-5afb-45ee-bb02-4d1cc2699a64.png']
-},
-{
-  id:'HONADA_ADV', nome:'Honda ADV', ano:2026, precoAvista:'R$ 33.594',
-  imgs:[
-    'https://www.honda.com.br/motos/sites/hda/files/2025-08/Imagem-Home-Honda-ADV-Prata-Met%C3%A1lico_0.webp',
-    'https://d1qa0ax3fv1ims.cloudfront.net/catalogo_imagens/duas_rodas/honda-adv_-vermelha_lateral-2_0.png'
-  ]
-},
-{
-  id:'CG160START', nome:'CG 160 START', ano:2026, precoAvista:'R$ 25.479',
-  imgs:[
-    'https://www.honda.com.br/motos/sites/hda/files/2025-08/Imagem-home-visao-da-lateral-direita-da-honda-cg-160-start.webp',
-    'https://d1qa0ax3fv1ims.cloudfront.net/catalogo_imagens/duas_rodas/cg-160-start-vermelha-lateral.png',
-    'https://d1qa0ax3fv1ims.cloudfront.net/catalogo_imagens/duas_rodas/cg-160-start-preta-lateral.png'
-  ]
-},
-{
-  id:'CG160FAN', nome:'CG 160 FAN', ano:2026, precoAvista:'R$ 27.591',
-  imgs:[
-    'https://www.honda.com.br/motos/sites/hda/files/2025-08/Imagem-Home-Honda-CG-160-Fan-Vermelho-Perolizado.webp',
-    'https://d1qa0ax3fv1ims.cloudfront.net/catalogo_imagens/duas_rodas/preto-metalico-infinite-black-metallic-1.png',
-    'https://www.honda.com.br/motos/sites/hda/files/2025-08/Imagem-Home-Honda-CG-160-Fan-Prata-Met%C3%A1lico.webp'
-  ]
-},
-{
-  id:'CG160TITAN', nome:'CG 160 TITAN', ano:2026, precoAvista:'R$ 29.440',
-  imgs:[
-    'https://www.honda.com.br/motos/sites/hda/files/2025-08/Imagem-Home-Honda-CG-160-Titan-Cinza-Met%C3%A1lico.webp',
-    'https://d1qa0ax3fv1ims.cloudfront.net/catalogo_imagens/duas_rodas/cg-160-titan-vermelha-lateral.png',
-    'https://d1qa0ax3fv1ims.cloudfront.net/catalogo_imagens/duas_rodas/cg-160-titan-preta-lateral.png'
-  ]
-},
-{
-  id:'NXR160ABS', nome:'NXR 160 BROS ABS', ano:2026, precoAvista:'R$ 33.823',
-  imgs:[
-    'https://www.honda.com.br/motos/sites/hda/files/2026-09/0260%20HONDA%20MOTOS%2031-08-26%20ok%20b.webp',
-    'https://www.honda.com.br/motos/sites/hda/files/2026-09/0118%20HONDA%20MOTOS%2031-08-26%20ok%20b.webp'
-  ]
-},
-{
-  id:'NXR160BRS', nome:'NXR 160 BROS CBS', ano:2026, precoAvista:'R$ 32.511',
-  imgs:[
-    'https://www.honda.com.br/motos/sites/hda/files/2026-09/0108%20HONDA%20MOTOS%2031-08-26%20ok%20b.webp',
-    'https://www.honda.com.br/motos/sites/hda/files/2026-09/0240%20HONDA%20MOTOS%2031-08-26%20ok%20b.webp'
-  ]
-},
-{
-  id:'XRE190', nome:'XRE 190', ano:2026, precoAvista:'R$ 32.590',
-  imgs:['https://www.motopel.com.br/site/wp-content/uploads/2021/02/xre-190-azul.webp']
-},
-{
-  id:'XR300LT', nome:'XR 300L TORNADO', ano:2027, precoAvista:'R$ 40.790',
-  imgs:['https://www.honda.com.br/motos/sites/hda/files/2026-07/0164%20HONDA%2029-06-26%20ok.webp',
-        'https://www.honda.com.br/motos/sites/hda/files/2026-07/0178%20HONDA%2029-06-26%20ok.webp'
-  ]
-},
-{
-  id:'CRF300F', nome:'CRF 300F', ano:2027, precoAvista:'R$ 31.756',
-  imgs:[
-    'https://www.motopel.com.br/site/wp-content/uploads/2025/08/capa-crf-300f.webp',
-    'https://www.honda.com.br/motos/sites/hda/files/2025-08/crf300f-cor-2.webp',
-    'https://www.honda.com.br/motos/sites/hda/files/2025-08/crf300f-cor-3.webp'
-  ]
-},
-{
-  id:'CB300FTWABS', nome:'CB 300F TWISTER ABS', ano:2027, precoAvista:'R$ 35.390',
-  imgs:[
-    'https://www.honda.com.br/motos/sites/hda/files/2026-09/Twister%20ABS%20Vermelha%20-%20Lateral%20360%20-%20DESKTOP.webp',
-    'https://www.honda.com.br/motos/sites/hda/files/2026-09/Twister%20ABS%20Preta%20-%20Lateral%20360%20-%20DESKTOP.webp'
-  ]
-},
-{
-  id:'CB300FTWABS S', nome:'CB 300F TWISTER ABS S', ano:2026, precoAvista:'R$ 36,387',
-  imgs:[
-    'https://www.honda.com.br/motos/sites/hda/files/2026-08/Imagem-home-honda-Twister-S-AZUL.webp'
-  ]
-},
-{
-  id:'SAHARA300ABS', nome:'SAHARA 300 ABS', ano:2027, precoAvista:'R$ 41.446',
-  imgs:['https://www.honda.com.br/motos/sites/hda/files/2026-07/0302%20HONDA%2029-06-26.webp']
-},
-{
-  id:'SAHARA300RALLY', nome:'SAHARA 300 RALLY', ano:2027, precoAvista:'R$ 42.396',
-  imgs:['https://www.honda.com.br/motos/sites/hda/files/2026-07/0058%20HONDA%2029-06-26%20ok.webp']
-},
-{
-  id:'SAHARA300ADV', nome:'SAHARA 300 ADV', ano:2027, precoAvista:'R$ 42.751',
-  imgs:['https://www.honda.com.br/motos/sites/hda/files/2026-07/0048%20HONDA%2029-06-26%20ok.webp']
-},
-{
-  id:'CB500HOR', nome:'CB 500 HORNET', ano:2027, precoAvista:'R$ 52.346',
-  imgs:[
-    'https://www.honda.com.br/motos/sites/hda/files/2026-06/Home_3.webp',
-    'https://www.honda.com.br/motos/sites/hda/files/2025-08/Imagem-home-honda-Hornet500-Vermelha-Lateral_0.webp',
-    'https://www.honda.com.br/motos/sites/hda/files/2025-08/Imagem-home-honda-Hornet500-Preta-Lateral_0.webp'
-  ]
-},
-{
-  id:'NX500', nome:'NX 500', ano:2026, precoAvista:'R$ 55.492',
-  imgs:[
-    'https://www.motopel.com.br/site/wp-content/uploads/2025/07/capa-nx-500-2026-vermelha.webp',
-    'https://www.honda.com.br/motos/sites/hda/files/2026-06/Home.webp',
-    'https://www.honda.com.br/motos/sites/hda/files/2025-08/Imagem-home-honda-NX500-preta-Lateral.webp'
-  ]
-},
-{
-  id:'NC750X', nome:'NC 750X', ano:2026, precoAvista:'R$ 67.172',
-  imgs:[
-    'https://www.honda.com.br/motos/sites/hda/files/2025-10/Lateral-v_5.webp',
-    'https://www.honda.com.br/motos/sites/hda/files/2025-10/Lateral-p.webp'
-  ]
-},
-{
-  id:'CB1000HORNET', nome:'CB 1000R HORNET', ano:2026, precoAvista:'R$ 92.475',
-  imgs:[
-    'https://www.honda.com.br/motos/sites/hda/files/2026-08/Home_860x550_6.webp',
-    'https://www.honda.com.br/motos/sites/hda/files/2026-08/Home_860x550_3.webp',
-    'https://www.honda.com.br/motos/sites/hda/files/2026-08/Home_860x550_7.webp'
-  ]
-},
-{
-  id:'CRF1100L', nome:'CRF 1100L AFRICA TWIN', ano:2027, precoAvista:'R$ 99.967',
-  imgs:[
-    'https://www.honda.com.br/motos/sites/hda/files/2025-12/CRF1100L-Africa-Twin-DCT-ES-vista-lateralmente.webp',
-    'https://www.honda.com.br/motos/sites/hda/files/2025-12/Home%20-%20860x550%20-%20PNG.webp',
-    'https://www.honda.com.br/motos/sites/hda/files/2025-12/CRF1100L-Africa-Twin-MT-vista-lateralmente.webp'
-  ]
-}
-];
-
-document.getElementById('logo-campanha').src = CONFIG_TEMA.logoURL;
-document.getElementById('tema-label').innerText = CONFIG_TEMA.nomeCampanha;
-document.getElementById('titulo-principal').innerText = CONFIG_TEMA.tituloSite;
-
-function renderCards() {
-    const grid = document.getElementById('motoGrid');
-    MOTOS.forEach((m, index) => {
-        const card = document.createElement('div');
-        card.className = 'moto-card';
-        card.innerHTML = `
-            <div class="moto-stage" onclick="executarAnimacao(this, ${index})" data-current-img="0">
-                <div class="placa-ano">${CONFIG_TEMA.tagMiniatura}</div>
-                <img src="${CONFIG_TEMA.enfeiteIcone}" class="decoracao-pendurada">
-                <div class="burnout-smoke"></div>
-                <div class="pneu-mark"></div>
-                <img src="${m.imgs[0]}" class="moto-img">
-            </div>
-            <div class="card-info">
-                <h3 class="moto-name">${m.nome}</h3>
-                <div class="moto-price">À vista ${m.precoAvista}</div>
-
-                <div class="btn-box">
-                    <a href="financiamento.html?moto=${m.id}" class="btn-action btn-fin">Financiar</a>
-                    <a href="Consórcio.html?moto=${m.id}" class="btn-action btn-cons">Consórcio</a>
-                </div>
-            </div>`;
-        grid.appendChild(card);
-    });
-}
-
-function executarAnimacao(stage, motoIndex) {
-    const motoImgElement = stage.querySelector('.moto-img');
-    const smoke = stage.querySelector('.burnout-smoke');
-    const mark = stage.querySelector('.pneu-mark');
-    const motoData = MOTOS[motoIndex];
-
-    if (motoImgElement.classList.contains('animate-drive')) return;
-
-    smoke.style.opacity = "1";
-    mark.style.width = "120px";
-    mark.style.transition = "width 0.4s";
-
-    setTimeout(() => { 
-        motoImgElement.classList.add('animate-drive'); 
-        smoke.style.opacity = "0"; 
-    }, 500);
-
-    setTimeout(() => {
-        if(motoData.imgs.length > 1) {
-            let currentIdx = parseInt(stage.getAttribute('data-current-img'));
-            let nextIdx = (currentIdx + 1) % motoData.imgs.length;
-            
-            motoImgElement.src = motoData.imgs[nextIdx];
-            stage.setAttribute('data-current-img', nextIdx);
-        }
-    }, 1300);
-
-    setTimeout(() => { 
-        motoImgElement.classList.remove('animate-drive'); 
-        mark.style.width = "0"; 
-    }, 2800);
-}
-
-/* =========================================
-   3. MÓDULO DE PARTÍCULAS (CORES HONDA RED & GOLD)
-   ========================================= */
-const canvas = document.getElementById('bg-canvas');
-const ctx = canvas.getContext('2d');
-let particles = [];
-const techColors = ['#e60012', '#ffd700', '#ffffff', '#222222'];
-
-function resize() { canvas.width = window.innerWidth; canvas.height = window.innerHeight; }
-window.addEventListener('resize', resize);
-resize();
-
-class TechParticle {
-    constructor() { this.reset(true); }
-    
-    reset(initial = false) {
-        this.x = Math.random() * canvas.width;
-        this.y = initial ? Math.random() * canvas.height : canvas.height + 10;
-        this.vx = (Math.random() - 0.5) * 1; 
-        this.vy = -(Math.random() * 1.5 + 0.5);
-        this.size = Math.random() * 3 + 1;
-        this.color = techColors[Math.floor(Math.random() * techColors.length)];
-        this.alpha = Math.random() * 0.6 + 0.2;
-    }
-
-    update() {
-        this.y += this.vy;
-        this.x += this.vx;
-        if (this.y < -10) this.reset();
-    }
-
-    draw() {
-        ctx.save();
-        ctx.globalAlpha = this.alpha;
-        ctx.beginPath();
-        ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
-        ctx.fillStyle = this.color;
-        ctx.fill();
-        ctx.restore();
-    }
-}
-
-for(let i=0; i<70; i++) particles.push(new TechParticle()); 
-
-function animateBG() {
-    ctx.clearRect(0, 0, canvas.width, canvas.height);
-    particles.forEach(p => { p.update(); p.draw(); });
-    requestAnimationFrame(animateBG);
-}
-
-renderCards();
-animateBG();
-</script>
-</body>
-</html>
+      </div>
+    </a>
